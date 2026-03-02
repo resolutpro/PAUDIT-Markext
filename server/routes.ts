@@ -51,9 +51,13 @@ export async function registerRoutes(
       }
 
       // 2. Si no es local, intentar App Storage
-      console.log(`Intentando descargar de App Storage: ${filePath}`);
+      const storagePath = filePath.startsWith("jerez-en-capas-arte-sacro/") 
+        ? filePath 
+        : filePath;
+      
+      console.log(`Intentando descargar de App Storage: ${storagePath}`);
       const { value: fileData, error } =
-        await storageClient.downloadAsBytes(filePath);
+        await storageClient.downloadAsBytes(storagePath);
 
       if (error || !fileData) {
         console.error(`Error de App Storage para ${filePath}:`, error);
