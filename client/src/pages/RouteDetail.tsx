@@ -1,7 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useRoute, Link } from 'wouter';
-import { ChevronLeft, Share2, Map as MapIcon, Route as RouteIcon, Clock, Navigation } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useEffect, useState } from "react";
+import { useRoute, Link } from "wouter";
+import {
+  ChevronLeft,
+  Share2,
+  Map as MapIcon,
+  Route as RouteIcon,
+  Clock,
+  Navigation,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { RouteMap } from "@/components/RouteMap";
 
 interface Stop {
   id: number;
@@ -9,6 +17,7 @@ interface Stop {
   imageUrl: string;
   imageAlt: string;
   text: string;
+  coordinates?: [number, number]; // [latitud, longitud]
 }
 
 interface RouteData {
@@ -20,27 +29,27 @@ interface RouteData {
 }
 
 export default function RouteDetail() {
-  const [, params] = useRoute('/rutas/:slug');
+  const [, params] = useRoute("/rutas/:slug");
   const slug = params?.slug;
-  
+
   const [routeData, setRouteData] = useState<RouteData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!slug) return;
-    
+
     setIsLoading(true);
     fetch(`/api/routes/${slug}`)
-      .then(res => {
-        if (!res.ok) throw new Error('Ruta no encontrada');
+      .then((res) => {
+        if (!res.ok) throw new Error("Ruta no encontrada");
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         setRouteData(data);
         setIsLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error loading route details:", err);
         setError(true);
         setIsLoading(false);
@@ -70,7 +79,9 @@ export default function RouteDetail() {
     return (
       <div className="container max-w-md mx-auto p-8 text-center pt-20">
         <h1 className="text-2xl font-bold mb-4">Ruta no encontrada</h1>
-        <p className="text-muted-foreground mb-8">Lo sentimos, no hemos podido cargar la información de esta ruta.</p>
+        <p className="text-muted-foreground mb-8">
+          Lo sentimos, no hemos podido cargar la información de esta ruta.
+        </p>
         <Button asChild>
           <Link href="/rutas">Volver a rutas</Link>
         </Button>
@@ -96,25 +107,29 @@ export default function RouteDetail() {
           <h1 className="text-base font-bold truncate">{routeData.title}</h1>
           <p className="text-xs text-primary font-medium">PAUDIT V1.0</p>
         </div>
-        <Button variant="ghost" size="icon" className="rounded-full" aria-label="Compartir ruta">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="rounded-full"
+          aria-label="Compartir ruta"
+        >
           <Share2 className="h-5 w-5" />
         </Button>
       </div>
 
       <div className="container max-w-3xl mx-auto px-4 py-6">
-        {/* Map/Hero Placeholder */}
-        <div className="w-full h-48 md:h-64 bg-card border border-border/50 rounded-2xl mb-6 flex flex-col items-center justify-center text-muted-foreground relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center"></div>
-          <MapIcon className="h-10 w-10 mb-2 relative z-10" />
-          <span className="font-medium relative z-10">Mapa interactivo de la ruta</span>
-          <span className="text-xs relative z-10">(Opcional según especificaciones)</span>
+        {/* Mapa interactivo */}
+        <div className="w-full h-64 md:h-80 border border-border/50 rounded-2xl mb-6 relative overflow-hidden shadow-sm">
+          <RouteMap stops={routeData.stops} />
         </div>
 
         {/* Stats Row */}
         <div className="grid grid-cols-3 gap-3 mb-8">
           <div className="bg-card border border-border/50 rounded-xl p-3 flex flex-col items-center justify-center text-center">
             <RouteIcon className="h-5 w-5 text-muted-foreground mb-1" />
-            <span className="text-xs text-muted-foreground mb-1">Distancia</span>
+            <span className="text-xs text-muted-foreground mb-1">
+              Distancia
+            </span>
             <span className="font-bold text-lg leading-none">{distance}</span>
           </div>
           <div className="bg-card border border-border/50 rounded-xl p-3 flex flex-col items-center justify-center text-center">
@@ -133,18 +148,23 @@ export default function RouteDetail() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-bold">Paradas en Orden</h2>
-            <span className="text-sm font-medium bg-secondary px-3 py-1 rounded-full">{routeData.stops.length} Paradas</span>
+            <span className="text-sm font-medium bg-secondary px-3 py-1 rounded-full">
+              {routeData.stops.length} Paradas
+            </span>
           </div>
 
           <div className="space-y-3" role="list">
             {routeData.stops.map((stop, index) => (
               <Link key={stop.id} href={`/rutas/${slug}/${stop.id}`}>
-                <a className="group flex items-center p-3 pr-4 bg-card border border-border/50 hover:border-primary/50 rounded-xl transition-all" role="listitem">
+                <a
+                  className="group flex items-center p-3 pr-4 bg-card border border-border/50 hover:border-primary/50 rounded-xl transition-all"
+                  role="listitem"
+                >
                   <div className="relative mr-4 shrink-0">
                     <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img 
-                        src={stop.imageUrl} 
-                        alt="" 
+                      <img
+                        src={stop.imageUrl}
+                        alt=""
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         aria-hidden="true"
                       />
@@ -153,15 +173,23 @@ export default function RouteDetail() {
                       {index + 1}
                     </div>
                   </div>
-                  
+
                   <div className="flex-1 min-w-0 pr-4">
-                    <h3 className="font-bold text-base truncate group-hover:text-primary transition-colors">{stop.title}</h3>
+                    <h3 className="font-bold text-base truncate group-hover:text-primary transition-colors">
+                      {stop.title}
+                    </h3>
                     <div className="flex gap-2 text-xs text-muted-foreground mt-1">
-                      <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span> Audio</span>
-                      <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span> LSE</span>
+                      <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
+                        Audio
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
+                        LSE
+                      </span>
                     </div>
                   </div>
-                  
+
                   <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground/50 group-hover:text-primary transition-colors shrink-0" />
                 </a>
               </Link>
@@ -172,7 +200,11 @@ export default function RouteDetail() {
 
       {/* Sticky Bottom Action */}
       <div className="fixed bottom-0 md:bottom-auto w-full md:w-auto md:sticky bg-background/95 backdrop-blur border-t border-border/50 p-4 z-30 pb-safe pb-20 md:pb-4 flex justify-center">
-        <Button size="lg" className="w-full max-w-md h-14 text-lg font-bold shadow-lg gap-2" asChild>
+        <Button
+          size="lg"
+          className="w-full max-w-md h-14 text-lg font-bold shadow-lg gap-2"
+          asChild
+        >
           <Link href={`/rutas/${slug}/1`}>
             <Navigation className="h-5 w-5" />
             Empezar Ruta

@@ -284,33 +284,27 @@ export default function StopDetail() {
             </h3>
           </div>
 
-          <div className="relative aspect-video bg-black flex items-center justify-center group">
-            {/* Simulated Video Player */}
-            <div className="absolute inset-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center"></div>
+          <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden rounded-t-none">
+            {stop.lseVideoUrl ? (
+              <video
+                src={stop.lseVideoUrl}
+                controls
+                className="w-full h-full object-contain"
+                preload="metadata"
+                controlsList="nodownload"
+              >
+                Tu navegador no soporta la reproducción de vídeos.
+              </video>
+            ) : (
+              <div className="text-muted-foreground flex flex-col items-center gap-2 opacity-50">
+                <Play className="h-10 w-10" />
+                <p className="text-sm font-medium">Vídeo LSE no disponible</p>
+              </div>
+            )}
 
-            <Button
-              size="icon"
-              variant="secondary"
-              className="h-16 w-16 rounded-full relative z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border-0"
-              aria-label="Reproducir vídeo LSE"
-            >
-              <Play className="h-8 w-8 ml-1" />
-            </Button>
-
-            <Button
-              size="icon"
-              variant="ghost"
-              className="absolute top-2 right-2 text-white bg-black/40 hover:bg-black/60 rounded-full h-8 w-8 z-10"
-              aria-label="Pantalla completa"
-            >
-              <Maximize className="h-4 w-4" />
-            </Button>
-
-            {enableSubtitles && (
-              <div className="absolute bottom-4 left-0 w-full text-center z-10 px-4">
-                <span className="bg-black/70 text-white text-sm md:text-base px-3 py-1 rounded inline-block backdrop-blur-sm shadow-sm">
-                  Subtítulos Activados
-                </span>
+            {/* Aviso de subtítulos flotante si están activados */}
+            {enableSubtitles && stop.lseVideoUrl && (
+              <div className="absolute top-4 left-4 z-10 pointer-events-none">
               </div>
             )}
           </div>
