@@ -64,25 +64,6 @@ export default function Home() {
           <p className="text-lg text-white/90 mb-6 max-w-xl text-shadow-sm">
             Rutas accesibles por monumentos e historia adaptadas para todos.
           </p>
-
-          <div className="w-full max-w-md relative flex items-center">
-            <Search className="absolute left-3 h-5 w-5 text-muted-foreground" />
-            <Input
-              type="text"
-              placeholder="Buscar rutas o municipios..."
-              className="w-full pl-10 pr-12 h-12 text-base rounded-full bg-background/95 backdrop-blur border-none shadow-lg text-foreground placeholder:text-muted-foreground/70"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              aria-label="Buscar rutas"
-            />
-            <Button
-              size="icon"
-              className="absolute right-1 h-10 w-10 rounded-full"
-              aria-label="Ejecutar búsqueda"
-            >
-              <Search className="h-4 w-4" />
-            </Button>
-          </div>
         </div>
       </section>
 

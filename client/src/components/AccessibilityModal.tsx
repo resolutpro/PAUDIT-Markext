@@ -22,8 +22,8 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] h-[90vh] sm:h-auto overflow-y-auto">
-        <DialogHeader className="flex flex-row items-center justify-between">
+      <DialogContent className="sm:max-w-[425px] max-h-[90vh] flex flex-col p-0 overflow-hidden">
+        <DialogHeader className="px-6 pt-6 flex flex-row items-center justify-between shrink-0">
           <DialogTitle className="text-xl">Accesibilidad</DialogTitle>
           <Button variant="ghost" size="sm" onClick={resetToDefault} className="text-primary gap-2 h-8">
             <Undo2 className="h-4 w-4" />
@@ -31,7 +31,8 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
           </Button>
         </DialogHeader>
 
-        <div className="grid gap-8 py-4">
+        <div className="flex-1 overflow-y-auto px-6 py-4">
+          <div className="grid gap-8 pb-4">
           {/* Text Size */}
           <section role="group" aria-labelledby="text-size-heading">
             <div className="flex items-center gap-2 mb-4 text-primary">
@@ -155,8 +156,9 @@ export default function AccessibilityModal({ isOpen, onClose }: AccessibilityMod
             <p className="font-medium">"Este antiguo emplazamiento fue establecido en el siglo XII como un punto clave..."</p>
           </div>
         </div>
+      </div>
 
-        <div className="mt-auto pt-4 pb-8 sm:pb-0">
+      <div className="px-6 py-4 mt-auto border-t bg-background shrink-0">
           <Button className="w-full h-12 text-lg font-bold" onClick={onClose}>
             Aplicar Preferencias
           </Button>

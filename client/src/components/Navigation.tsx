@@ -37,13 +37,25 @@ export function Navigation() {
             <span className="text-xl font-bold tracking-tight">PAUDIT</span>
           </Link>
 
+          <div className="hidden md:flex items-center gap-6">
+            <Link href="/" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/' ? 'text-primary' : 'text-muted-foreground'}`}>Inicio</Link>
+            <Link href="/rutas" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/rutas' ? 'text-primary' : 'text-muted-foreground'}`}>Rutas</Link>
+            <button 
+              onClick={() => setIsAccessModalOpen(true)}
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2"
+            >
+              <Accessibility className="h-4 w-4" />
+              Acceso
+            </button>
+          </div>
+
           <div className="flex items-center gap-2">
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={() => setIsAccessModalOpen(true)}
               aria-label="Configuración de accesibilidad"
-              className="hidden md:flex"
+              className="md:hidden"
             >
               <Accessibility className="h-5 w-5" />
             </Button>
