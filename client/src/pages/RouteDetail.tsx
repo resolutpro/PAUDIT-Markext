@@ -31,7 +31,7 @@ export default function RouteDetail() {
     if (!slug) return;
     
     setIsLoading(true);
-    fetch(`/content/routes/${slug}.json`)
+    fetch(`/api/routes/${slug}`)
       .then(res => {
         if (!res.ok) throw new Error('Ruta no encontrada');
         return res.json();

@@ -44,7 +44,7 @@ export default function StopDetail() {
     if (!slug) return;
     
     setIsLoading(true);
-    fetch(`/content/routes/${slug}.json`)
+    fetch(`/api/routes/${slug}`)
       .then(res => res.json())
       .then(data => {
         setRouteData({ title: data.title, stops: data.stops });

@@ -26,7 +26,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetch('/content/routes.json')
+    fetch('/api/routes')
       .then(res => res.json())
       .then(data => {
         setRoutes(data);

@@ -24,7 +24,7 @@ export default function RouteList() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/content/routes.json')
+    fetch('/api/routes')
       .then(res => res.json())
       .then(data => {
         setRoutes(data);
