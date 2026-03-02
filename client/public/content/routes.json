@@ -1,13 +1,13 @@
 [
   {
     "id": "1",
-    "slug": "muralla-romana-lugo",
-    "title": "Muralla Romana de Lugo",
-    "municipality": "Lugo, Galicia",
-    "summary": "Descubre la única muralla romana del mundo que conserva todo su perímetro intacto, declarada Patrimonio de la Humanidad.",
-    "image": "https://images.unsplash.com/photo-1548678967-f1fc58f8b163?q=80&w=800&auto=format&fit=crop",
-    "stopCount": 3,
-    "duration": "45 min",
+    "slug": "jerez-monumental-arte-sacro",
+    "title": "Jerez monumental y Arte Sacro",
+    "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+    "summary": "Un paseo por el casco histórico para leer la ciudad en sus capas: palacios y linajes, espacios de cuidado y devoción, y un cierre interpretativo en el Museo de Arte Sacro (Palacio de la Vicaría).",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Jerez_de_los_Caballeros_01.jpg",
+    "stopCount": 10,
+    "duration": "1h 15m",
     "flags": {
       "audio": true,
       "lse": true,
@@ -16,17 +16,17 @@
   },
   {
     "id": "2",
-    "slug": "casco-historico-toledo",
-    "title": "Casco Histórico de Toledo",
-    "municipality": "Toledo, Castilla-La Mancha",
-    "summary": "Un viaje en el tiempo por la Ciudad de las Tres Culturas, donde convivieron cristianos, judíos y musulmanes.",
-    "image": "https://images.unsplash.com/photo-1574700055008-81206f0e21b1?q=80&w=800&auto=format&fit=crop",
-    "stopCount": 3,
-    "duration": "1h 20m",
+    "slug": "jerez-por-capas-fortaleza-templaria",
+    "title": "Jerez por capas: de Roma a la Fortaleza",
+    "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+    "summary": "Ruta en forma de viaje temporal: empieza en la Plaza de Toros (s. XIX), pasa por ermitas y el salto a la villa romana de El Pomar, y se reengancha con la ciudad defensiva (puertas y torres) hasta el cierre en Santa Lucía.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/JerezCaballerosTemplario.jpg",
+    "stopCount": 11,
+    "duration": "1h 45m",
     "flags": {
       "audio": true,
       "lse": true,
-      "easyRead": false
+      "easyRead": true
     }
   }
 ]
