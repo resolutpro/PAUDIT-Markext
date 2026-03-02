@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, Accessibility, Home, Map as MapIcon, Heart, User } from 'lucide-react';
+import { Menu, X, Accessibility, Home, Map as MapIcon, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import AccessibilityModal from './AccessibilityModal';
@@ -46,9 +46,6 @@ export function Navigation() {
               className="hidden md:flex"
             >
               <Accessibility className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon" className="rounded-full bg-secondary text-secondary-foreground" aria-label="Perfil de usuario">
-              <User className="h-5 w-5" />
             </Button>
           </div>
         </div>
