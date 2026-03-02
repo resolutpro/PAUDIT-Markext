@@ -72,39 +72,53 @@ export default function StopDetail() {
   // Audio setup
   useEffect(() => {
     if (stop?.audioUrl) {
-      audioRef.current = new Audio(stop.audioUrl);
+      // Usar el constructor de Audio con la URL completa
+      const audio = new Audio(stop.audioUrl);
+      audioRef.current = audio;
 
       const updateProgress = () => {
-        if (audioRef.current && audioRef.current.duration) {
+        if (audio && audio.duration) {
           setAudioProgress(
-            (audioRef.current.currentTime / audioRef.current.duration) * 100,
+            (audio.currentTime / audio.duration) * 100,
           );
         }
       };
 
       const handleEnded = () => setIsPlaying(false);
+      
+      const handleError = (e: any) => {
+        console.error("Error en la reproducción de audio:", e);
+        setIsPlaying(false);
+      };
 
-      audioRef.current.addEventListener("timeupdate", updateProgress);
-      audioRef.current.addEventListener("ended", handleEnded);
+      audio.addEventListener("timeupdate", updateProgress);
+      audio.addEventListener("ended", handleEnded);
+      audio.addEventListener("error", handleError);
 
       return () => {
-        if (audioRef.current) {
-          audioRef.current.removeEventListener("timeupdate", updateProgress);
-          audioRef.current.removeEventListener("ended", handleEnded);
-          audioRef.current.pause();
-        }
+        audio.removeEventListener("timeupdate", updateProgress);
+        audio.removeEventListener("ended", handleEnded);
+        audio.removeEventListener("error", handleError);
+        audio.pause();
+        audioRef.current = null;
       };
     }
-  }, [stop]);
+  }, [stop?.audioUrl]);
 
-  const toggleAudio = () => {
+  const toggleAudio = async () => {
     if (!audioRef.current) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
+    try {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        await audioRef.current.play();
+        setIsPlaying(true);
+      }
+    } catch (err) {
+      console.error("Error al reproducir audio:", err);
+      setIsPlaying(false);
     }
-    setIsPlaying(!isPlaying);
   };
 
   const skipAudio = (seconds: number) => {

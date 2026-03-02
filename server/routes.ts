@@ -54,13 +54,20 @@ export async function registerRoutes(
       } else if (lowerPath.endsWith(".mp4")) {
         res.setHeader("Content-Type", "video/mp4");
       } else if (lowerPath.endsWith(".mp3")) {
-        res.setHeader("Content-Type", "audio/mpeg"); // <--- AÑADIDO PARA AUDIO MP3
+        res.setHeader("Content-Type", "audio/mpeg");
       } else if (lowerPath.endsWith(".wav")) {
         res.setHeader("Content-Type", "audio/wav");
+      } else if (lowerPath.endsWith(".m4a")) {
+        res.setHeader("Content-Type", "audio/mp4");
+      } else if (lowerPath.endsWith(".ogg")) {
+        res.setHeader("Content-Type", "audio/ogg");
       }
 
       // Enviamos el archivo al cliente
-      res.send(Buffer.from(fileData));
+      const buffer = Buffer.from(fileData);
+      res.setHeader("Content-Length", buffer.length);
+      res.setHeader("Accept-Ranges", "bytes");
+      res.send(buffer);
     } catch (error) {
       console.error("Error cargando archivo multimedia:", error);
       res.status(500).send("Error interno del servidor");
