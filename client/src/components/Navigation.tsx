@@ -37,56 +37,25 @@ export function Navigation() {
             <span className="text-xl font-bold tracking-tight">PAUDIT</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
-            <Link href="/" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/' ? 'text-primary' : 'text-muted-foreground'}`}>Inicio</Link>
-            <Link href="/rutas" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/rutas' ? 'text-primary' : 'text-muted-foreground'}`}>Rutas</Link>
-            <button 
-              onClick={() => setIsAccessModalOpen(true)}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2"
-            >
-              <Accessibility className="h-4 w-4" />
-              Acceso
-            </button>
-          </div>
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-6">
+              <Link href="/" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/' ? 'text-primary' : 'text-muted-foreground'}`}>Inicio</Link>
+              <Link href="/rutas" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/rutas' ? 'text-primary' : 'text-muted-foreground'}`}>Rutas</Link>
+            </div>
 
-          <div className="flex items-center gap-2">
             <Button 
               variant="ghost" 
-              size="icon" 
+              size="sm" 
               onClick={() => setIsAccessModalOpen(true)}
               aria-label="Configuración de accesibilidad"
-              className="md:hidden"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary flex items-center gap-2 px-2"
             >
               <Accessibility className="h-5 w-5" />
+              <span className="hidden sm:inline">Acceso</span>
             </Button>
           </div>
         </div>
       </header>
-
-      {/* Bottom Navigation for Mobile */}
-      <nav className="md:hidden fixed bottom-0 z-40 w-full border-t border-border/40 bg-background pb-safe">
-        <div className="flex justify-around items-center h-16">
-          <Link href="/">
-            <a className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${location === '/' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>
-              <Home className="h-5 w-5" />
-              <span className="text-[10px] font-medium">Inicio</span>
-            </a>
-          </Link>
-          <Link href="/rutas">
-            <a className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${location === '/rutas' ? 'text-primary' : 'text-muted-foreground hover:text-primary'}`}>
-              <MapIcon className="h-5 w-5" />
-              <span className="text-[10px] font-medium">Rutas</span>
-            </a>
-          </Link>
-          <button 
-            className="flex flex-col items-center justify-center w-full h-full space-y-1 text-muted-foreground hover:text-primary"
-            onClick={() => setIsAccessModalOpen(true)}
-          >
-            <Accessibility className="h-5 w-5" />
-            <span className="text-[10px] font-medium">Acceso</span>
-          </button>
-        </div>
-      </nav>
 
       <AccessibilityModal 
         isOpen={isAccessModalOpen} 
