@@ -1,0 +1,54 @@
+{
+  "_help": {
+    "title": "Título de la ruta. Muestra el nombre principal.",
+    "municipality": "Municipio donde se encuentra.",
+    "stops": "Array de paradas de la ruta.",
+    "stop.title": "Nombre de la parada específica.",
+    "stop.text": "Texto descriptivo de la parada.",
+    "stop.audioUrl": "URL completa al archivo de audio (ej. mp3) alojado externamente.",
+    "stop.audioTranscript": "Transcripción textual del audio para accesibilidad.",
+    "stop.lseVideoUrl": "URL completa al vídeo en LSE (Lengua de Signos Española) alojado externamente (ej. mp4).",
+    "stop.videoTranscript": "Transcripción o subtítulos del vídeo en LSE.",
+    "stop.imageUrl": "URL de la imagen representativa de la parada.",
+    "stop.imageAlt": "Texto alternativo para la imagen, obligatorio por accesibilidad."
+  },
+  "id": "1",
+  "slug": "muralla-romana-lugo",
+  "title": "Muralla Romana de Lugo",
+  "municipality": "Lugo, Galicia",
+  "stops": [
+    {
+      "id": 1,
+      "title": "Puerta de Santiago",
+      "imageUrl": "https://images.unsplash.com/photo-1548678967-f1fc58f8b163?q=80&w=800&auto=format&fit=crop",
+      "imageAlt": "Vista de la Puerta de Santiago de la Muralla de Lugo, con arcos de piedra.",
+      "text": "La Puerta de Santiago es una de las diez puertas de la muralla y servía de salida para los peregrinos que se dirigían a Santiago de Compostela. Originalmente fue una puerta de uso exclusivo para los canónigos de la Catedral.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "audioTranscript": "Bienvenido a la Puerta de Santiago. Esta imponente entrada era el paso natural de los peregrinos. Fíjese en el grosor de la piedra y el relieve sobre el arco central, que representa al apóstol Santiago Matamoros.",
+      "lseVideoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "videoTranscript": "(Vídeo LSE) Explicación sobre la Puerta de Santiago, sus orígenes y su relación con el Camino de Santiago."
+    },
+    {
+      "id": 2,
+      "title": "Adarve (Paseo superior)",
+      "imageUrl": "https://images.unsplash.com/photo-1596707328135-263a23a8bce6?q=80&w=800&auto=format&fit=crop",
+      "imageAlt": "Camino en la parte superior de la muralla de piedra rodeada de césped verde.",
+      "text": "El adarve es el camino de ronda en la parte superior de la muralla. Tiene una longitud de más de dos kilómetros y ofrece unas vistas inmejorables tanto del casco histórico como del entorno de la ciudad. Su anchura permitía la circulación de tropas con facilidad.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "audioTranscript": "Nos encontramos en el adarve. Este pasillo superior, que hoy utilizamos para pasear, fue diseñado para la defensa militar. Observe cómo la muralla abraza completamente el centro de la ciudad de Lugo.",
+      "lseVideoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "videoTranscript": "(Vídeo LSE) Descripción del adarve de la muralla de Lugo, sus dimensiones y utilidad defensiva."
+    },
+    {
+      "id": 3,
+      "title": "Cubo y Torreón",
+      "imageUrl": "https://images.unsplash.com/photo-1582283995166-70e2b4f9810a?q=80&w=800&auto=format&fit=crop",
+      "imageAlt": "Detalle de uno de los torreones semicirculares de la muralla romana.",
+      "text": "La muralla cuenta con 85 cubos (torreones semicirculares). En algunos de ellos todavía se aprecian los restos de las escaleras de acceso originales y ventanales que servían para la guardia romana. Es una obra maestra de ingeniería militar del siglo III.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "audioTranscript": "Observe la forma semicircular de esta torre, conocida como 'cubo'. Originalmente, estas torres tenían dos pisos con grandes ventanales desde donde los soldados romanos vigilaban los alrededores de Lucus Augusti.",
+      "lseVideoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "videoTranscript": "(Vídeo LSE) Información sobre los cubos de la muralla, la estructura semicircular y cómo operaba la guardia romana en ellos."
+    }
+  ]
+}

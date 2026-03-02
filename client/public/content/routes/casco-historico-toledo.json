@@ -1,0 +1,54 @@
+{
+  "_help": {
+    "title": "Título de la ruta. Muestra el nombre principal.",
+    "municipality": "Municipio donde se encuentra.",
+    "stops": "Array de paradas de la ruta.",
+    "stop.title": "Nombre de la parada específica.",
+    "stop.text": "Texto descriptivo de la parada.",
+    "stop.audioUrl": "URL completa al archivo de audio (ej. mp3) alojado externamente.",
+    "stop.audioTranscript": "Transcripción textual del audio para accesibilidad.",
+    "stop.lseVideoUrl": "URL completa al vídeo en LSE (Lengua de Signos Española) alojado externamente (ej. mp4).",
+    "stop.videoTranscript": "Transcripción o subtítulos del vídeo en LSE.",
+    "stop.imageUrl": "URL de la imagen representativa de la parada.",
+    "stop.imageAlt": "Texto alternativo para la imagen, obligatorio por accesibilidad."
+  },
+  "id": "2",
+  "slug": "casco-historico-toledo",
+  "title": "Casco Histórico de Toledo",
+  "municipality": "Toledo, Castilla-La Mancha",
+  "stops": [
+    {
+      "id": 1,
+      "title": "Plaza de Zocodover",
+      "imageUrl": "https://images.unsplash.com/photo-1574700055008-81206f0e21b1?q=80&w=800&auto=format&fit=crop",
+      "imageAlt": "Vista de la bulliciosa Plaza de Zocodover en Toledo, con arquitectura tradicional.",
+      "text": "La Plaza de Zocodover es el corazón histórico de Toledo. Antiguamente fue un importante mercado de bestias de carga durante la época de dominación islámica. Hoy en día es el punto de encuentro por excelencia de la ciudad.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      "audioTranscript": "Bienvenidos a la Plaza de Zocodover, el centro neurálgico de Toledo. Su nombre proviene del árabe y significa 'mercado de bestias'. Mire a su alrededor para contemplar la arquitectura de los edificios que enmarcan la plaza.",
+      "lseVideoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "videoTranscript": "(Vídeo LSE) Explicación histórica de la Plaza de Zocodover como antiguo mercado árabe y centro de la ciudad."
+    },
+    {
+      "id": 2,
+      "title": "Catedral Primada de Toledo",
+      "imageUrl": "https://images.unsplash.com/photo-1618398485292-ccb2933dce45?q=80&w=800&auto=format&fit=crop",
+      "imageAlt": "Fachada gótica impresionante de la Catedral de Toledo.",
+      "text": "Una de las obras cumbre del estilo gótico en España. Su construcción comenzó en el siglo XIII sobre los cimientos de la antigua mezquita mayor. Destaca por su impresionante coro, el Altar Mayor y la rica colección de arte en su sacristía.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      "audioTranscript": "Ante nosotros se alza la imponente Catedral Primada. Es un magnífico ejemplo de la arquitectura gótica. Fíjese en los detalles de las puertas de la fachada principal y la altísima torre que domina el horizonte toledano.",
+      "lseVideoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "videoTranscript": "(Vídeo LSE) Detalles sobre la construcción de la Catedral gótica de Toledo sobre la antigua mezquita y sus elementos más destacados."
+    },
+    {
+      "id": 3,
+      "title": "Sinagoga de Santa María la Blanca",
+      "imageUrl": "https://images.unsplash.com/photo-1634842512686-90f7f329d91f?q=80&w=800&auto=format&fit=crop",
+      "imageAlt": "Interior de la sinagoga con arcos de herradura blancos y pilares octogonales.",
+      "text": "Construida en el siglo XII, es un bello ejemplo de arquitectura mudéjar toledana, aunque fue erigida como sinagoga y más tarde convertida en iglesia cristiana. Sus arcos de herradura y capiteles blancos deslumbran por su belleza geométrica.",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+      "audioTranscript": "Estamos en el interior de Santa María la Blanca. A pesar de haber sido construida como sinagoga en territorio cristiano, su estilo es puramente mudéjar, elaborado por artesanos musulmanes. Sus pilares blancos y arcos de herradura son inconfundibles.",
+      "lseVideoUrl": "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "videoTranscript": "(Vídeo LSE) Historia de la Sinagoga de Santa María la Blanca, destacando su estilo mudéjar y su significado como ejemplo de convivencia."
+    }
+  ]
+}
