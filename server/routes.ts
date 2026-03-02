@@ -2,6 +2,9 @@ import type { Express } from "express";
 import { type Server } from "http";
 import { storage } from "./storage";
 import { Client } from "@replit/object-storage";
+import path from "path"; // Importación necesaria
+import fs from "fs"; // Importación necesaria
+import os from "os"; // Importación necesaria
 
 const storageClient = new Client();
 
@@ -34,49 +37,48 @@ export async function registerRoutes(
 
   app.get(/^\/api\/media\/(.*)/, async (req, res) => {
     try {
-      // Capturamos la ruta del archivo (ej: routes/jerez-en-capas-arte-sacro/test.mp3)
       const filePath = req.params[0];
-      const lowerPath = filePath.toLowerCase();
 
-      // 1. Intentar buscar en el sistema de archivos local (public/media)
+      // 1. Creamos una ruta temporal segura donde guardar el archivo en el servidor.
+      // Cambiamos las barras '/' por guiones bajos '_' para evitar crear subcarpetas.
+      const safeFilename = filePath.replace(/\//g, "_");
+      const tempLocalPath = path.join(os.tmpdir(), safeFilename);
 
-      // Si no es local, intentar App Storage
-      console.log(`Intentando descargar de App Storage: ${filePath}`);
-      const { value: fileData, error } =
-        await storageClient.downloadAsBytes(filePath);
+      // 2. Si el archivo NO existe en nuestra carpeta temporal, lo descargamos
+      if (!fs.existsSync(tempLocalPath)) {
+        console.log(`Descargando a disco desde App Storage: ${filePath}`);
 
-      if (error || !fileData) {
-        console.error(`Error de App Storage para ${filePath}:`, error);
-        return res.status(404).send("Archivo no encontrado");
+        // ¡Usamos la función de la documentación que guarda a disco!
+        const { ok, error } = await storageClient.downloadToFilename(
+          filePath,
+          tempLocalPath,
+        );
+
+        if (!ok) {
+          console.error(
+            `Error descargando de App Storage para ${filePath}:`,
+            error,
+          );
+          return res.status(404).send("Archivo no encontrado");
+        }
+        console.log(`✅ Archivo guardado temporalmente en: ${tempLocalPath}`);
       }
 
-      setMediaHeaders(res, lowerPath, fileData.length);
-      res.send(Buffer.from(fileData));
+      // 3. Dejamos que Express haga su magia.
+      // res.sendFile detecta automáticamente el formato (.mp3, .jpg) y maneja
+      // los fragmentos de audio (206 Partial Content) de forma nativa.
+      res.sendFile(tempLocalPath, (err) => {
+        if (err) {
+          console.error("Error enviando el archivo al navegador:", err);
+          // Si hubo un error cortado por el cliente, borramos el caché por si acaso
+          if (fs.existsSync(tempLocalPath)) fs.unlinkSync(tempLocalPath);
+        }
+      });
     } catch (error) {
-      console.error("Error cargando archivo multimedia:", error);
+      console.error("Error interno en el endpoint multimedia:", error);
       res.status(500).send("Error interno del servidor");
     }
   });
-
-  function setMediaHeaders(res: any, lowerPath: string, contentLength: number) {
-    if (lowerPath.endsWith(".jpg") || lowerPath.endsWith(".jpeg")) {
-      res.setHeader("Content-Type", "image/jpeg");
-    } else if (lowerPath.endsWith(".png")) {
-      res.setHeader("Content-Type", "image/png");
-    } else if (lowerPath.endsWith(".mp4")) {
-      res.setHeader("Content-Type", "video/mp4");
-    } else if (lowerPath.endsWith(".mp3")) {
-      res.setHeader("Content-Type", "audio/mpeg");
-    } else if (lowerPath.endsWith(".wav")) {
-      res.setHeader("Content-Type", "audio/wav");
-    } else if (lowerPath.endsWith(".m4a")) {
-      res.setHeader("Content-Type", "audio/mp4");
-    } else if (lowerPath.endsWith(".ogg")) {
-      res.setHeader("Content-Type", "audio/ogg");
-    }
-    res.setHeader("Content-Length", contentLength);
-    res.setHeader("Accept-Ranges", "bytes");
-  }
 
   return httpServer;
 }

@@ -70,40 +70,15 @@ export default function StopDetail() {
   }, [slug, stopId]);
 
   // Audio setup
-  useEffect(() => {
-    if (stop?.audioUrl) {
-      // Usar el constructor de Audio con la URL completa
-      const audio = new Audio(stop.audioUrl);
-      audioRef.current = audio;
-
-      const updateProgress = () => {
-        if (audio && audio.duration) {
-          setAudioProgress(
-            (audio.currentTime / audio.duration) * 100,
-          );
-        }
-      };
-
-      const handleEnded = () => setIsPlaying(false);
-      
-      const handleError = (e: any) => {
-        console.error("Error en la reproducción de audio:", e);
-        setIsPlaying(false);
-      };
-
-      audio.addEventListener("timeupdate", updateProgress);
-      audio.addEventListener("ended", handleEnded);
-      audio.addEventListener("error", handleError);
-
-      return () => {
-        audio.removeEventListener("timeupdate", updateProgress);
-        audio.removeEventListener("ended", handleEnded);
-        audio.removeEventListener("error", handleError);
-        audio.pause();
-        audioRef.current = null;
-      };
+  const handleTimeUpdate = () => {
+    if (audioRef.current && audioRef.current.duration) {
+      setAudioProgress(
+        (audioRef.current.currentTime / audioRef.current.duration) * 100,
+      );
     }
-  }, [stop?.audioUrl]);
+  };
+
+  const handleEnded = () => setIsPlaying(false);
 
   const toggleAudio = async () => {
     if (!audioRef.current) return;
@@ -144,6 +119,20 @@ export default function StopDetail() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col pb-24">
+      {/* Reproductor nativo invisible */}
+      {stop?.audioUrl && (
+        <audio
+          ref={audioRef}
+          src={stop.audioUrl}
+          onTimeUpdate={handleTimeUpdate}
+          onEnded={handleEnded}
+          onError={(e) => {
+            console.error("Error en reproductor HTML:", e);
+            setIsPlaying(false);
+          }}
+          preload="auto"
+        />
+      )}
       {/* Top App Bar */}
       <header className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border/50 px-4 h-16 flex items-center justify-between">
         <Button
