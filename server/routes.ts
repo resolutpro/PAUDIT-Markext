@@ -42,15 +42,12 @@ export async function registerRoutes(
 
       // 1. Intentar buscar en el sistema de archivos local (public/media)
       const localPath = path.join(process.cwd(), "public", "media", filePath);
-      try {
-        if (fs.existsSync(localPath)) {
-          const stats = fs.statSync(localPath);
-          const fileData = fs.readFileSync(localPath);
-          setMediaHeaders(res, lowerPath, fileData.length);
-          return res.send(fileData);
-        }
-      } catch (e) {
-        console.log(`No se encontró archivo local: ${localPath}`);
+      console.log(`Buscando localmente: ${localPath}`);
+      if (fs.existsSync(localPath)) {
+        console.log(`Encontrado local: ${localPath}`);
+        const fileData = fs.readFileSync(localPath);
+        setMediaHeaders(res, lowerPath, fileData.length);
+        return res.send(fileData);
       }
 
       // 2. Si no es local, intentar App Storage
