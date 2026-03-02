@@ -1,0 +1,80 @@
+Eres un desarrollador full-stack senior especializado en accesibilidad web. Necesito que construyas PAUDIT
+v1.0, una plataforma web en español y mobile-first para publicar rutas patrimoniales accesibles con
+contenido multimedia: texto, audioguía con transcripción, y vídeo en Lengua de Signos Española (LSE)
+(con transcripción/subtítulos si están disponibles).
+MUY IMPORTANTE (restricciones):
+NO uses base de datos.
+NO implementes zona admin/CMS.
+El contenido debe venir de ficheros de contenido dentro del repo (un fichero por ruta) y un fichero
+índice.
+Los audios y vídeos NO van dentro del repo: deben consumirse por URL (por ejemplo URLs de App
+Storage u otro hosting). En los ficheros de contenido solo habrá referencias/URLs.
+No inventes rutas extra: habrá solo 2 rutas.
+OBJETIVO DE PRODUCTO
+UX muy visual, tipo turismo cultural: “apetece visitar”.
+Flujo principal: Home → Listado de rutas → Detalle de ruta → Detalle de parada (consumo de contenido).
+La ruta debe tener paradas numeradas 1..N y la experiencia debe ser cómoda en móvil.
+TECNOLOGÍA (elige un stack sencillo en Replit y justifica brevemente)
+Puedes usar un stack web típico (por ejemplo React/Next o equivalente), pero la prioridad es: que
+funcione bien, sea fácil de mantener y accesible.
+Incluye un sistema simple para leer los ficheros de contenido (JSON).
+Si añades mapa, debe ser opcional y nunca la única forma de navegar.
+ESTRUCTURA DE CONTENIDO (OBLIGATORIA)
+Crea estos ficheros en el repo:
+1./content/routes.json
+Índice con las 2 rutas (id, slug, título, municipio, resumen, imagen opcional, número de paradas,
+flags de recursos disponibles).
+2./content/routes/ruta-1.json y /content/routes/ruta-2.json (nombres basados en slug)
+Un fichero por ruta, con:
+metadatos de ruta
+array de paradas ordenadas (1..N)
+en cada parada: texto, y referencias a multimedia (audio y vídeo LSE)
+
+IMPORTANTE: Dentro de cada fichero de ruta, deja comentarios claros (aunque sea como campos
+“_comment” en JSON) indicando exactamente:
+dónde poner el título de la ruta
+dónde poner el municipio
+dónde poner el texto de cada parada
+dónde poner audioUrl (URL al mp3) y audioTranscript (texto)
+dónde poner lseVideoUrl (URL al vídeo) y videoTranscript (texto)
+dónde añadir imágenes y su alt
+Nota: como JSON estándar no soporta comentarios, usa campos tipo _comment_* o una sección _help
+dentro del JSON con instrucciones para el equipo (muy legibles).
+Genera además un seed de ejemplo realista: 2 rutas y 3 paradas por ruta (contenido placeholder), con
+URLs dummy tipo https://... para audio/vídeo.
+FUNCIONALIDADES PÚBLICAS (FRONT)
+1.Home
+Hero visual + explicación breve del proyecto.
+CTA a “Ver rutas”.
+Enlace a “Accesibilidad” y “Proyecto”.
+2.Listado de rutas
+Cards con: título, municipio, no paradas, iconos/labels de recursos (audio, LSE, lectura fácil si existiera).
+Diseño claro y agradable.
+3.Detalle de ruta
+Muestra información de ruta + lista accesible de paradas (numeradas).
+Botón “Empezar ruta”
+
+→ abre parada 1.
+
+La navegación por lista es obligatoria (aunque haya mapa, el mapa nunca es la única navegación).
+4.Detalle de parada (core)
+Secciones claras (pueden ser acordeones accesibles):
+A) Texto
+B) Audioguía: reproductor accesible + transcripción visible
+C) Vídeo LSE: reproductor/embed responsivo + transcripción (y subtítulos si hay enlace o texto)
+Navegación “Anterior / Siguiente” + indicador “Parada X de N”.
+5.Página de Accesibilidad
+Explica cómo navegar con teclado, compromiso de accesibilidad y contacto.
+ACCESIBILIDAD (WCAG AA) — CRITERIOS DE ACEPTACIÓN
+Navegación completa por teclado, foco visible, orden lógico.
+Semántica correcta (landmarks y headings).
+Tamaños táctiles cómodos en móvil.
+El contenido multimedia debe tener alternativa:
+Audio siempre con transcripción visible.
+Vídeo LSE con transcripción y/o subtítulos si están disponibles.
+Preferencias de usuario (mínimo): tamaño de texto (normal/grande) y alto contraste (on/off) guardadas
+en localStorage.
+DISEÑO VISUAL
+Estilo moderno, limpio, turístico.
+Cards atractivas, buena jerarquía tipográfica, espacio y legibilidad.
+La web completa en español.
