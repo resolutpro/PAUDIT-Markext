@@ -2,6 +2,8 @@ import type { Express } from "express";
 import { type Server } from "http";
 import { storage } from "./storage";
 import { Client } from "@replit/object-storage";
+import path from "path";
+import fs from "fs";
 
 const storageClient = new Client();
 
@@ -36,43 +38,58 @@ export async function registerRoutes(
     try {
       // Capturamos la ruta del archivo (ej: routes/jerez-en-capas-arte-sacro/test.mp3)
       const filePath = req.params[0];
+      const lowerPath = filePath.toLowerCase();
 
-      // Descargamos el archivo de App Storage
+      // 1. Intentar buscar en el sistema de archivos local (public/media)
+      const localPath = path.join(process.cwd(), "public", "media", filePath);
+      try {
+        if (fs.existsSync(localPath)) {
+          const stats = fs.statSync(localPath);
+          const fileData = fs.readFileSync(localPath);
+          setMediaHeaders(res, lowerPath, fileData.length);
+          return res.send(fileData);
+        }
+      } catch (e) {
+        console.log(`No se encontró archivo local: ${localPath}`);
+      }
+
+      // 2. Si no es local, intentar App Storage
+      console.log(`Intentando descargar de App Storage: ${filePath}`);
       const { value: fileData, error } =
         await storageClient.downloadAsBytes(filePath);
 
       if (error || !fileData) {
-        return res.status(404).send("Archivo no encontrado en App Storage");
+        console.error(`Error de App Storage para ${filePath}:`, error);
+        return res.status(404).send("Archivo no encontrado");
       }
 
-      // Establecemos el Content-Type correcto según la extensión
-      const lowerPath = filePath.toLowerCase();
-      if (lowerPath.endsWith(".jpg") || lowerPath.endsWith(".jpeg")) {
-        res.setHeader("Content-Type", "image/jpeg");
-      } else if (lowerPath.endsWith(".png")) {
-        res.setHeader("Content-Type", "image/png");
-      } else if (lowerPath.endsWith(".mp4")) {
-        res.setHeader("Content-Type", "video/mp4");
-      } else if (lowerPath.endsWith(".mp3")) {
-        res.setHeader("Content-Type", "audio/mpeg");
-      } else if (lowerPath.endsWith(".wav")) {
-        res.setHeader("Content-Type", "audio/wav");
-      } else if (lowerPath.endsWith(".m4a")) {
-        res.setHeader("Content-Type", "audio/mp4");
-      } else if (lowerPath.endsWith(".ogg")) {
-        res.setHeader("Content-Type", "audio/ogg");
-      }
-
-      // Enviamos el archivo al cliente
-      const buffer = Buffer.from(fileData);
-      res.setHeader("Content-Length", buffer.length);
-      res.setHeader("Accept-Ranges", "bytes");
-      res.send(buffer);
+      setMediaHeaders(res, lowerPath, fileData.length);
+      res.send(Buffer.from(fileData));
     } catch (error) {
       console.error("Error cargando archivo multimedia:", error);
       res.status(500).send("Error interno del servidor");
     }
   });
+
+  function setMediaHeaders(res: any, lowerPath: string, contentLength: number) {
+    if (lowerPath.endsWith(".jpg") || lowerPath.endsWith(".jpeg")) {
+      res.setHeader("Content-Type", "image/jpeg");
+    } else if (lowerPath.endsWith(".png")) {
+      res.setHeader("Content-Type", "image/png");
+    } else if (lowerPath.endsWith(".mp4")) {
+      res.setHeader("Content-Type", "video/mp4");
+    } else if (lowerPath.endsWith(".mp3")) {
+      res.setHeader("Content-Type", "audio/mpeg");
+    } else if (lowerPath.endsWith(".wav")) {
+      res.setHeader("Content-Type", "audio/wav");
+    } else if (lowerPath.endsWith(".m4a")) {
+      res.setHeader("Content-Type", "audio/mp4");
+    } else if (lowerPath.endsWith(".ogg")) {
+      res.setHeader("Content-Type", "audio/ogg");
+    }
+    res.setHeader("Content-Length", contentLength);
+    res.setHeader("Accept-Ranges", "bytes");
+  }
 
   return httpServer;
 }
