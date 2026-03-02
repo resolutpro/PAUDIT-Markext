@@ -2,8 +2,6 @@ import type { Express } from "express";
 import { type Server } from "http";
 import { storage } from "./storage";
 import { Client } from "@replit/object-storage";
-import path from "path";
-import fs from "fs";
 
 const storageClient = new Client();
 
@@ -41,16 +39,8 @@ export async function registerRoutes(
       const lowerPath = filePath.toLowerCase();
 
       // 1. Intentar buscar en el sistema de archivos local (public/media)
-      const localPath = path.join(process.cwd(), "public", "media", filePath);
-      console.log(`Buscando localmente: ${localPath}`);
-      if (fs.existsSync(localPath)) {
-        console.log(`Encontrado local: ${localPath}`);
-        const fileData = fs.readFileSync(localPath);
-        setMediaHeaders(res, lowerPath, fileData.length);
-        return res.send(fileData);
-      }
 
-      // 2. Si no es local, intentar App Storage
+      // Si no es local, intentar App Storage
       console.log(`Intentando descargar de App Storage: ${filePath}`);
       const { value: fileData, error } =
         await storageClient.downloadAsBytes(filePath);
