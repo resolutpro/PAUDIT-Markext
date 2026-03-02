@@ -12,10 +12,9 @@
     "stop.imageUrl": "URL de la imagen representativa de la parada.",
     "stop.imageAlt": "Texto alternativo para la imagen, obligatorio por accesibilidad."
   },
-  {
-    "id": "1",
-    "slug": "jerez-en-capas-arte-sacro",
-    "title": "Jerez en capas: palacios, fortaleza y arte sacro",
+  "id": "1",
+  "slug": "jerez-monumental-arte-sacro",
+  "title": "Jerez monumental y Arte Sacro",
     "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
     "stops": [
       {
