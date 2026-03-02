@@ -97,7 +97,7 @@ app.use((req, res, next) => {
       reusePort: true,
     },
     () => {
-      log(`serving on port ${port}`);
+      log(`serving on port ${port} at 0.0.0.0`);
     },
   );
 })();
