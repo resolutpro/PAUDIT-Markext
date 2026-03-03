@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import type { RouteSummary, RouteDetail } from "@shared/schema";
 
-const contentDir = path.resolve(import.meta.dirname, "..", "client", "public", "content");
+const contentDir = path.resolve(process.cwd(), "client", "public", "content");
 
 export interface IStorage {
   getAllRoutes(): Promise<RouteSummary[]>;
