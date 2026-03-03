@@ -45,15 +45,12 @@ export default function Home() {
   );
 
   return (
-    <main
-      id="main-content"
-      className="pb-8 animate-in fade-in duration-500"
-    >
+    <main id="main-content" className="pb-8 animate-in fade-in duration-500">
       {/* Hero Section */}
       <section className="relative h-[300px] md:h-[400px] w-full overflow-hidden rounded-b-3xl md:rounded-3xl md:mt-4 md:mx-4 mx-0 mb-8 max-w-[calc(100%-2rem)] md:max-w-6xl md:mx-auto">
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent z-10" />
         <img
-          src="/api/media//jerez-en-capas-arte-sacro/00-introduccion.jpg"
+          src="/api/media/jerez-en-capas-arte-sacro/00-introduccion.jpg"
           alt="Antigua arquitectura romana"
           className="w-full h-full object-cover"
         />
