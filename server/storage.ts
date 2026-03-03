@@ -17,8 +17,7 @@ export class FileStorage implements IStorage {
   }
 
   async getRouteBySlug(slug: string): Promise<RouteDetail | null> {
-    const safeName = slug.replace(/[^a-z0-9-]/gi, "");
-    const filePath = path.join(contentDir, "routes", `${safeName}.json`);
+    const filePath = path.join(contentDir, "routes", `${slug}.json`);
 
     try {
       const data = await fs.promises.readFile(filePath, "utf-8");
