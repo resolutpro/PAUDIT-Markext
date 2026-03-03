@@ -13,10 +13,21 @@
     "stop.imageAlt": "Texto alternativo para la imagen, obligatorio por accesibilidad."
   },
   "id": "2",
-  "slug": "jerez-del-siglo-xix-a-la-fortaleza-y-santa-lucia",
+  "slug": "jerez-por-capas-fortaleza-templaria",
   "title": "Del siglo XIX a la fortaleza: Plaza de Toros, Roma y murallas",
   "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
   "stops": [
+    {
+      "id": 0,
+      "title": "Introducción",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/foto-ruta-2.jpg",
+      "imageAlt": "Introducción",
+      "text": """,
+      "audioUrl": "https://TU_CDN/audio/guia2/01-plaza-toros.mp3",
+      "audioTranscript": "Bienvenida o bienvenido a Jerez de los Caballeros.\n\nAntes de empezar, te propongo algo muy sencillo: respira hondo un par de veces y escucha el lugar donde estás. Puede que oigas pasos, voces, algún coche a lo lejos o el viento rozando una fachada. Esa “banda sonora” cotidiana es una buena puerta de entrada: también la ciudad, durante siglos, se ha entendido con los ojos… y con el oído.\n\nLa ruta que vas a recorrer hoy es, en realidad, un viaje por capas. Empezamos en un gran edificio de vida pública del siglo XIX, la Plaza de Toros, inaugurada en 1862. Después, iremos saltando hacia atrás en el tiempo: pasaremos por espacios de devoción y de vida religiosa, y daremos un salto enorme hasta la villa romana de El Pomar, donde todavía se puede intuir cómo se organizaba una casa alrededor de patios, mosaicos y agua.\n\nY aquí viene lo nuevo del recorrido: a partir de ese “mundo romano”, la ruta se reengancha con la ciudad medieval y defensiva. La Puerta de Burgos y las cuatro torres (del Reloj, del Carbón, de Armas y del Homenaje) no son solo piedras viejas en lo alto: son una forma de contar la ciudad desde su silueta, desde sus límites, desde lo que significaba vigilar, controlar el paso y proteger. Verás que, cuando empiezas a mirar torres y puertas como “herramientas” —no como decorado—, todo cobra un sentido distinto: dónde se colocan, qué dominan, qué esconden y qué muestran.\n\nEsta audioguía está pensada para que la uses sin presión. Puedes escucharla parada a parada al llegar a cada punto, o dejar que te acompañe mientras caminas. En cada parada voy a hacer dos cosas: primero, ayudarte a orientarte y a “encajar” el lugar en el recorrido; y después, darte el relato para que entiendas qué estás viendo y por qué importa. La idea clave es esta: aquí no solo miramos patrimonio, lo interpretamos. Te iré dando pistas sobre formas, materiales, proporciones, usos… porque muchas veces entender un edificio es entender cómo se vivía (o cómo se defendía) dentro de él.\n\nSi en algún momento dudas, no pasa nada. Busca una plaza abierta, una fachada principal o un punto reconocible, retoma la calma y continúa. Esta ruta está hecha para disfrutarse a tu ritmo, con curiosidad.\n\nY ahora sí: empezamos en la Plaza de Toros. Acércate, si puedes, hacia el acceso principal y deja que la forma circular del edificio marque el inicio del viaje.",
+      "lseVideoUrl": "",
+      "videoTranscript": ""
+    },
     {
       "id": 1,
       "title": "Plaza de Toros (C. Plaza de Toros)",
@@ -26,7 +37,8 @@
       "audioUrl": "https://TU_CDN/audio/guia2/01-plaza-toros.mp3",
       "audioTranscript": "Estás ante la Plaza de Toros de Jerez, inaugurada en 1862. Entiéndela por su forma: un anillo cerrado (aprox. 63,5 m de diámetro) que concentra la mirada hacia el centro. Se construye con mortero y ladrillo, materiales propios de su época.\n\nEl interior se organiza en dos pisos, además del tendido, con capacidad aproximada para seis mil personas. La arquitectura aquí es herramienta: contiene, distribuye y guía a un público numeroso. La entrada principal, con frente curvado y arco sobre pilastras, subraya la importancia cívica del lugar.\n\nAdemás del ruedo, piensa en su “sistema interno”: corrales, chiqueros, caballerizas, enfermería, despacho de billetes… Patrimonio urbano de la vida pública del XIX.",
       "lseVideoUrl": "",
-      "videoTranscript": ""
+      "videoTranscript": "",
+      "coordinates": [38.31834235159942, -6.772649753826512]
     },
     {
       "id": 2,

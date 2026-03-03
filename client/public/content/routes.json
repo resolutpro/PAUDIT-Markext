@@ -2,13 +2,13 @@
   {
     "id": "1",
     "slug": "jerez-monumental-arte-sacro",
-    "title": "Jerez monumental y Arte Sacro",
+    "title": "Jerez en capas: palacios, fortaleza y arte sacro",
     "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
     "summary": "Un paseo por el casco histórico para leer la ciudad en sus capas: palacios y linajes, espacios de cuidado y devoción, y un cierre interpretativo en el Museo de Arte Sacro.",
-    "image": "/api/media/jerez-en-capas-arte-sacro/fot-ruta.jpg",
+    "image": "/api/media/jerez-en-capas-arte-sacro/foto-ruta.jpg",
     "stopCount": 10,
     "duration": "2 h",
-    "distance": "1,8 km"
+    "distance": "1,8 km",
     "flags": {
       "audio": true,
       "lse": true,
@@ -18,12 +18,12 @@
   {
     "id": "2",
     "slug": "jerez-por-capas-fortaleza-templaria",
-    "title": "Jerez por capas: de Roma a la Fortaleza",
+    "title": "Del siglo XIX a la fortaleza: Plaza de Toros, Roma y murallas",
     "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
     "summary": "Ruta en forma de viaje temporal: empieza en la Plaza de Toros, pasa por ermitas y el salto a la villa romana de El Pomar, y se reengancha con la ciudad defensiva (puertas y torres) hasta el cierre en Santa Lucía.",
-    "image": "/api/media/jerez-en-capas-arte-sacro/fot-ruta.jpg",
+    "image": "/api/media/jerez-monumental-arte-sacro/foto-ruta-2.jpg",
     "stopCount": 11,
-    "duration": "1h 45m",
+    "duration": "3h",
     "flags": {
       "audio": true,
       "lse": true,
