@@ -1,25 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
   Polyline,
+  useMap,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-// Arreglo para los iconos de Leaflet en React
-import icon from "leaflet/dist/images/marker-icon.png";
-import iconShadow from "leaflet/dist/images/marker-shadow.png";
+// Componente auxiliar para ajustar los límites del mapa y fijar el zoom mínimo
+function MapBoundsFit({ bounds }: { bounds: L.LatLngBoundsExpression }) {
+  const map = useMap();
 
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
-L.Marker.prototype.options.icon = DefaultIcon;
+  useEffect(() => {
+    if (bounds) {
+      // Ajusta el mapa para que se vean todas las paradas (con un pequeño margen de padding)
+      map.fitBounds(bounds, { padding: [40, 40] });
+
+      // Una vez encuadrado, le decimos al mapa que el nivel de zoom actual sea el mínimo permitido
+      // Así el usuario no puede hacer zoom hacia atrás (alejarse más)
+      const currentZoom = map.getZoom();
+      map.setMinZoom(currentZoom);
+    }
+  }, [map, bounds]);
+
+  return null;
+}
 
 interface RouteMapProps {
   stops: { id: number; title: string; coordinates?: [number, number] }[];
@@ -27,30 +35,41 @@ interface RouteMapProps {
 
 export function RouteMap({ stops }: RouteMapProps) {
   // Filtramos solo las paradas que tienen coordenadas válidas
-  const validStops = stops.filter(
-    (stop) => stop.coordinates && stop.coordinates.length === 2,
+  const validStops = useMemo(
+    () =>
+      stops.filter((stop) => stop.coordinates && stop.coordinates.length === 2),
+    [stops],
   );
 
   if (validStops.length === 0) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-muted">
-        No hay coordenadas disponibles
+      <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
+        No hay coordenadas disponibles para esta ruta.
       </div>
     );
   }
 
-  // Calculamos el centro del mapa basándonos en la primera parada
-  const center = validStops[0].coordinates!;
-
-  // Extraemos solo las coordenadas para dibujar la línea de la ruta
+  // Extraemos las coordenadas para la línea y los límites del mapa
   const routeLine = validStops.map((stop) => stop.coordinates!);
+  const bounds = L.latLngBounds(routeLine);
+
+  // Función para crear un icono numerado usando divIcon de Leaflet
+  const createNumberedIcon = (number: number) => {
+    return L.divIcon({
+      className: "custom-div-icon",
+      html: `<div style="background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-weight: bold; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.3); font-size: 12px; margin-top: -13px; margin-left: -13px;">${number}</div>`,
+      iconSize: [0, 0], // El tamaño real lo da el div en el html
+      iconAnchor: [0, 0], // Centrado exacto basado en el margin-top/left del div
+    });
+  };
 
   return (
     <MapContainer
-      center={center}
-      zoom={15}
       className="w-full h-full z-0 rounded-2xl"
+      // Quitamos center y zoom fijos porque los maneja MapBoundsFit
     >
+      <MapBoundsFit bounds={bounds} />
+
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -61,14 +80,19 @@ export function RouteMap({ stops }: RouteMapProps) {
         positions={routeLine}
         color="hsl(var(--primary))"
         weight={4}
-        opacity={0.7}
+        opacity={0.6}
+        dashArray="10, 10" // Opcional: hace que la línea sea punteada, puedes quitarlo si la prefieres continua
       />
 
-      {/* Dibuja los marcadores */}
+      {/* Dibuja los marcadores numerados */}
       {validStops.map((stop, index) => (
-        <Marker key={stop.id} position={stop.coordinates!}>
+        <Marker
+          key={stop.id}
+          position={stop.coordinates!}
+          icon={createNumberedIcon(index + 1)}
+        >
           <Popup>
-            <strong>
+            <strong className="text-sm">
               {index + 1}. {stop.title}
             </strong>
           </Popup>

@@ -25,6 +25,9 @@ interface RouteData {
   slug: string;
   title: string;
   municipality: string;
+  distance?: string; 
+  duration?: string;  
+  difficulty?: string;
   stops: Stop[];
 }
 
@@ -90,9 +93,9 @@ export default function RouteDetail() {
   }
 
   // Placeholder static values since we don't have these in the detailed JSON yet
-  const distance = "4.2 km";
-  const duration = "1h 15m";
-  const difficulty = "Fácil";
+  const distance = routeData.distance || "No especificada";
+  const duration = routeData.duration || "No especificada";
+  const difficulty = routeData.difficulty || "No especificado";
 
   return (
     <main id="main-content" className="pb-24 animate-in fade-in duration-300">
