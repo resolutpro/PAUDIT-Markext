@@ -4,10 +4,11 @@
     "slug": "jerez-monumental-arte-sacro",
     "title": "Jerez monumental y Arte Sacro",
     "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
-    "summary": "Un paseo por el casco histórico para leer la ciudad en sus capas: palacios y linajes, espacios de cuidado y devoción, y un cierre interpretativo en el Museo de Arte Sacro (Palacio de la Vicaría).",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Jerez_de_los_Caballeros_01.jpg",
+    "summary": "Un paseo por el casco histórico para leer la ciudad en sus capas: palacios y linajes, espacios de cuidado y devoción, y un cierre interpretativo en el Museo de Arte Sacro.",
+    "image": "/api/media/jerez-en-capas-arte-sacro/fot-ruta.jpg",
     "stopCount": 10,
-    "duration": "1h 15m",
+    "duration": "2 h",
+    "distance": "1,8 km"
     "flags": {
       "audio": true,
       "lse": true,
@@ -19,8 +20,8 @@
     "slug": "jerez-por-capas-fortaleza-templaria",
     "title": "Jerez por capas: de Roma a la Fortaleza",
     "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
-    "summary": "Ruta en forma de viaje temporal: empieza en la Plaza de Toros (s. XIX), pasa por ermitas y el salto a la villa romana de El Pomar, y se reengancha con la ciudad defensiva (puertas y torres) hasta el cierre en Santa Lucía.",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/7/7e/JerezCaballerosTemplario.jpg",
+    "summary": "Ruta en forma de viaje temporal: empieza en la Plaza de Toros, pasa por ermitas y el salto a la villa romana de El Pomar, y se reengancha con la ciudad defensiva (puertas y torres) hasta el cierre en Santa Lucía.",
+    "image": "/api/media/jerez-en-capas-arte-sacro/fot-ruta.jpg",
     "stopCount": 11,
     "duration": "1h 45m",
     "flags": {
