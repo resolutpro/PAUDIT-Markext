@@ -10,9 +10,11 @@ import {
   Type,
   Maximize,
   Ear,
+  MapPin,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAccessibility } from "@/context/AccessibilityContext";
+import { StopMap } from "@/components/StopMap";
 
 interface StopData {
   id: number;
@@ -24,6 +26,7 @@ interface StopData {
   audioTranscript: string;
   lseVideoUrl: string;
   videoTranscript: string;
+  coordinates?: [number, number];
 }
 
 interface RouteData {
@@ -168,6 +171,16 @@ export default function StopDetail() {
             PAUDIT v1.0 • Guía Multimedia
           </p>
 
+          {stop.imageUrl && (
+            <div className="mb-6 rounded-xl overflow-hidden shadow-sm border border-border/50">
+              <img
+                src={stop.imageUrl}
+                alt={stop.imageAlt || `Imagen de la parada ${stop.title}`}
+                className="w-full h-auto object-cover max-h-[400px]"
+              />
+            </div>
+          )}
+
           <div className="flex bg-secondary p-1 rounded-lg mb-6 max-w-sm">
             <button
               className={`flex-1 py-2 text-sm font-bold rounded-md ${!preferEasyRead ? "bg-background shadow-sm" : "text-muted-foreground"}`}
@@ -183,6 +196,19 @@ export default function StopDetail() {
 
           <p className="text-lg leading-relaxed">{stop.text}</p>
         </section>
+
+        {stop.coordinates && (
+          <section aria-labelledby="map-heading">
+            <h3
+              id="map-heading"
+              className="text-xl font-bold mb-4 flex items-center gap-2"
+            >
+              <MapPin className="h-5 w-5 text-primary" />
+              Cómo llegar
+            </h3>
+            <StopMap coordinates={stop.coordinates} stopTitle={stop.title} />
+          </section>
+        )}
 
         {/* Audio Guide Section */}
         <section
@@ -304,8 +330,7 @@ export default function StopDetail() {
 
             {/* Aviso de subtítulos flotante si están activados */}
             {enableSubtitles && stop.lseVideoUrl && (
-              <div className="absolute top-4 left-4 z-10 pointer-events-none">
-              </div>
+              <div className="absolute top-4 left-4 z-10 pointer-events-none"></div>
             )}
           </div>
 
