@@ -8,6 +8,7 @@ import NotFound from "@/pages/not-found";
 
 // Components
 import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 
 // Pages
 import Home from "@/pages/Home";
@@ -28,6 +29,7 @@ function Router() {
         <Route path="/accesibilidad" component={AccessibilityPage} />
         <Route component={NotFound} />
       </Switch>
+      <Footer />
     </>
   );
 }
