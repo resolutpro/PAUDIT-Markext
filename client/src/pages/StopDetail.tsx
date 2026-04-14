@@ -23,6 +23,7 @@ interface StopData {
   imageAlt: string;
   text: string;
   audioUrl: string;
+  audioDuration?: string;
   audioTranscript: string;
   lseVideoUrl: string;
   videoTranscript: string;
@@ -52,6 +53,7 @@ export default function StopDetail() {
   const [audioProgress, setAudioProgress] = useState(0);
   const [showTranscript, setShowTranscript] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioDuration, setAudioDuration] = useState<string>("--:--");
 
   useEffect(() => {
     if (!slug) return;
@@ -82,6 +84,20 @@ export default function StopDetail() {
   };
 
   const handleEnded = () => setIsPlaying(false);
+
+  const formatDuration = (durationSeconds: number) => {
+    if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) return "--:--";
+    const totalSeconds = Math.round(durationSeconds);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  };
+
+  const handleLoadedMetadata = () => {
+    if (audioRef.current?.duration) {
+      setAudioDuration(formatDuration(audioRef.current.duration));
+    }
+  };
 
   const toggleAudio = async () => {
     if (!audioRef.current) return;
@@ -128,6 +144,7 @@ export default function StopDetail() {
           ref={audioRef}
           src={stop.audioUrl}
           onTimeUpdate={handleTimeUpdate}
+            onLoadedMetadata={handleLoadedMetadata}
           onEnded={handleEnded}
           onError={(e) => {
             console.error("Error en reproductor HTML:", e);
@@ -228,7 +245,7 @@ export default function StopDetail() {
                 <div>
                   <p className="font-bold text-sm">Narración en Español</p>
                   <p className="text-xs text-muted-foreground">
-                    Duración: 2:30
+                    Duración: {audioDuration !== "--:--" ? audioDuration : stop.audioDuration || "--:--"}
                   </p>
                 </div>
               </div>
