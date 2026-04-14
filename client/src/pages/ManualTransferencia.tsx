@@ -30,7 +30,7 @@ export default function ManualTransferencia() {
         </div>
 
         <Button asChild className="mt-6">
-          <a href="/appstorage/manual-transferencia.pdf" download data-testid="button-descargar-manual">
+          <a href="/manual-transferencia.pdf" download data-testid="button-descargar-manual">
             <Download className="mr-2 h-4 w-4" />
             Descargar manual
           </a>
