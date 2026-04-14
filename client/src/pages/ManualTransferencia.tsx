@@ -24,7 +24,7 @@ export default function ManualTransferencia() {
             <FileText className="h-6 w-6" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold">manual-transferencia.pdf</h2>
+            <h2 className="text-xl font-semibold">Manual de transferencia y sostenibilidad</h2>
             <p className="text-sm text-muted-foreground">Archivo PDF listo para descargar.</p>
           </div>
         </div>
