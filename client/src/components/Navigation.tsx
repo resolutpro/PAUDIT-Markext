@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, Accessibility, Home, Map as MapIcon, Heart } from 'lucide-react';
+import { Menu, Accessibility } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import AccessibilityModal from './AccessibilityModal';
@@ -23,6 +23,7 @@ export function Navigation() {
               <nav className="flex flex-col gap-4 mt-8">
                 <Link href="/" className="text-lg font-medium hover:text-primary transition-colors">Inicio</Link>
                 <Link href="/rutas" className="text-lg font-medium hover:text-primary transition-colors">Explorar Rutas</Link>
+                <Link href="/manual-transferencia" className="text-lg font-medium hover:text-primary transition-colors">Manual de transferencia</Link>
                 <button 
                   onClick={() => setIsAccessModalOpen(true)}
                   className="text-left text-lg font-medium hover:text-primary transition-colors"
@@ -41,6 +42,7 @@ export function Navigation() {
             <div className="hidden md:flex items-center gap-6">
               <Link href="/" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/' ? 'text-primary' : 'text-muted-foreground'}`}>Inicio</Link>
               <Link href="/rutas" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/rutas' ? 'text-primary' : 'text-muted-foreground'}`}>Rutas</Link>
+              <Link href="/manual-transferencia" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/manual-transferencia' ? 'text-primary' : 'text-muted-foreground'}`}>Manual</Link>
             </div>
 
             <Button 

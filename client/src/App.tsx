@@ -16,6 +16,7 @@ import RouteList from "@/pages/RouteList";
 import RouteDetail from "@/pages/RouteDetail";
 import StopDetail from "@/pages/StopDetail";
 import AccessibilityPage from "@/pages/Accessibility";
+import ManualTransferencia from "@/pages/ManualTransferencia";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function Router() {
         <Route path="/rutas/:slug" component={RouteDetail} />
         <Route path="/rutas/:slug/:stopId" component={StopDetail} />
         <Route path="/accesibilidad" component={AccessibilityPage} />
+        <Route path="/manual-transferencia" component={ManualTransferencia} />
         <Route component={NotFound} />
       </Switch>
       <Footer />
