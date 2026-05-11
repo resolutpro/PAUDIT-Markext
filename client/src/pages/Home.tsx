@@ -53,6 +53,7 @@ export default function Home() {
           src="/api/media/imagen-home.webp"
           alt="Antigua arquitectura romana"
           className="w-full h-full object-cover"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center">
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-2 max-w-2xl leading-tight text-shadow">
@@ -97,6 +98,7 @@ export default function Home() {
                           alt=""
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           aria-hidden="true"
+                          loading="lazy"
                         />
                         {idx === 0 && (
                           <div className="absolute top-4 left-4 z-20 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
