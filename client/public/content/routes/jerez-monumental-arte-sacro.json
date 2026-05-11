@@ -24,7 +24,7 @@
     {
       "id": 0,
       "title": "Introducción",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/foto-ruta.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/foto-ruta.webp",
       "imageAlt": "Imagen representativa de la ruta: Jerez en capas: palacios, fortaleza y arte sacro.",
       "text": "Bienvenido/a. Antes de empezar a caminar, te propongo una idea sencilla: en Jerez de los Caballeros no vas a ver “monumentos sueltos”. Vas a leer una ciudad escrita por capas, una encima de otra, durante miles de años.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada0.mp3",
@@ -36,7 +36,7 @@
     {
       "id": 1,
       "title": "Palacio del Marqués de Rianzuela",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/palacio-rianzuela.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/palacio-rianzuela.webp",
       "imageAlt": "Imagen de la parada: Palacio del Marqués de Rianzuela.",
       "text": "Detente un momento aquí, en la calle San Agustín. Estás delante de un edificio que explica, sin necesidad de entrar, cómo se construía el prestigio en una ciudad señorial como Jerez de los Caballeros.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada1.mp3",
@@ -49,7 +49,7 @@
     {
       "id": 2,
       "title": "Convento de San Agustín ",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/convento-san-agustín.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/convento-san-agustín.webp",
       "imageAlt": "Imagen de la parada: Convento de San Agustín",
       "text": "Detente un momento en la Plaza de San Agustín. Estás ante uno de los edificios más útiles para entender el patrimonio de Jerez de los Caballeros, porque aquí el pasado no es una sola etapa: es una sucesión completa de usos, de estilos y de funciones sociales.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada2.mp3",
@@ -62,7 +62,7 @@
     {
       "id": 3,
       "title": "Plaza de la Alcazaba",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/plaza-alcazaba.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/plaza-alcazaba.webp",
       "imageAlt": "Imagen de la parada: Plaza de la Alcazaba",
       "text": "Detente un momento aquí, en la Plaza de la Alcazaba. Esta parada tiene una fuerza especial porque no depende de lo decorativo: depende del lugar y de lo que sugiere.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada3.mp3",
@@ -75,7 +75,7 @@
     {
       "id": 4,
       "title": "Hospital de Pobres y Transeúntes",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/hospital-pobres.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/hospital-pobres.webp",
       "imageAlt": "Imagen de la parada: Hospital de Pobres y Transeúntes",
       "text": "Detente un momento aquí, porque esta parada cambia el tono de la ruta. Hasta ahora hemos hablado de poder, de frontera y de símbolos visibles.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada4.mp3",
@@ -88,7 +88,7 @@
     {
       "id": 5,
       "title": "Palacio del Conde de la Corte de la Berrona",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/palacio-berrona.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/palacio-berrona.webp",
       "imageAlt": "Imagen de la parada: Palacio del Conde de la Corte de la Berrona",
       "text": "Detente un momento en esta calle y mira el conjunto con calma. Si en la primera parada aprendimos a leer un palacio, aquí lo aplicamos con una ventaja: este edificio no solo habla por su arquitectura, también habla por su posición.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada5.mp3",
@@ -101,7 +101,7 @@
     {
       "id": 6,
       "title": "Casa Natal de Vasco Núñez de Balboa",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/casa-vasco.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/casa-vasco.webp",
       "imageAlt": "Imagen de la parada: Casa Natal de Vasco Núñez de Balboa.",
       "text": "Detente un momento aquí. Esta parada cambia la escala de toda la ruta.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada6.mp3",
@@ -114,7 +114,7 @@
     {
       "id": 7,
       "title": "Hospital de Enfermos",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/hospital-enfermos.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/hospital-enfermos.webp",
       "imageAlt": "Imagen de la parada: Hospital de Enfermos",
       "text": "Detente un momento aquí, porque esta parada no busca ser “bonita”: busca ser honesta. Es incómoda en el mejor sentido, porque te obliga a pensar en lo que faltaba.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada7.mp3",
@@ -153,7 +153,7 @@
     {
       "id": 10,
       "title": "Museo de Arte Sacro",
-      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/museo-arte.jpg",
+      "imageUrl": "/api/media/jerez-en-capas-arte-sacro/museo-arte.webp",
       "imageAlt": "Imagen de la parada: Museo de Arte Sacro",
       "text": "Ahora sí: entramos en el “detrás de las fachadas”. Después de leer la ciudad en piedra —palacios, murallas, hospitales y capillas—, aquí vamos a leerla en objetos.",
       "audioUrl": "/api/media/jerez-en-capas-arte-sacro/parada10.mp3",

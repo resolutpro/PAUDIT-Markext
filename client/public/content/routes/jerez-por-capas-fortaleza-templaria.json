@@ -24,7 +24,7 @@
     {
       "id": 0,
       "title": "Introducción",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/foto-ruta-2.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/foto-ruta-2.webp",
       "imageAlt": "Introducción",
       "text": "Introducción",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada0.mp3",
@@ -36,7 +36,7 @@
     {
       "id": 1,
       "title": "Plaza de Toros",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/plaza-toros.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/plaza-toros.webp",
       "imageAlt": "Plaza de Toros de Jerez de los Caballeros, edificio circular del siglo XIX construido con ladrillo y piedra.",
       "text": "Inicio del viaje por capas desde un gran edificio público del XIX (1862): arquitectura circular pensada para reunir, ordenar y contener a miles de personas.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada1.mp3",
@@ -49,7 +49,7 @@
     {
       "id": 2,
       "title": "Ermita de los Santos Mártires",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/ermita-santos.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/ermita-santos.webp",
       "imageAlt": "Ermita encalada de los Santos Mártires con pórtico de triple arquería en la plaza extramuros de Jerez de los Caballeros.",
       "text": "Ermita extramuros con raíces del XV y continuidad viva: pórtico de triple arquería, nave única y retablo barroco con San Sebastián.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada2.mp3",
@@ -75,7 +75,7 @@
     {
       "id": 4,
       "title": "Domus suburbana – Villa Romana de El Pomar",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/villa-el-pomar.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/villa-el-pomar.webp",
       "imageAlt": "Restos arqueológicos de la villa romana de El Pomar, con planta doméstica organizada en torno a un patio porticado.",
       "text": "Salto al mundo romano (III–IV d. C.): villa rústica articulada hacia un peristilo-jardín con estanque, mosaicos y vida doméstica ligada a producción y agua.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada4.mp3",
@@ -88,7 +88,7 @@
     {
       "id": 5,
       "title": "Puerta de Burgos",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/puerta-burgos.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/puerta-burgos.webp",
       "imageAlt": "Arco apuntado y torreón de la Puerta de Burgos en la muralla de Jerez de los Caballeros, antiguo punto de control de acceso.",
       "text": "Una puerta es un filtro: arco apuntado, mampostería reforzada con sillares y almenas. Lugar estratégico citado desde finales del XV y reparado tras 1706.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada5.mp3",
@@ -101,7 +101,7 @@
     {
       "id": 6,
       "title": "Ermita de Santiago",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/ermita-santiago.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/ermita-santiago.webp",
       "imageAlt": "Pequeña ermita integrada en un torreón junto a la antigua puerta de Santiago en la Plaza de Santiago.",
       "text": "Devoción dentro de una estructura defensiva: capilla pequeña en un torreón, subida por escalera y espacio cubierto con bóveda de arista.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada6.mp3",
@@ -114,7 +114,7 @@
     {
       "id": 7,
       "title": "Torre del Reloj",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-reloj.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-reloj.webp",
       "imageAlt": "Torre del Reloj de la muralla, con base defensiva y cuerpo superior encalado donde se ubica el reloj.",
       "text": "Torre de funciones cambiantes: de vigilar a marcar el tiempo. Base defensiva, añadidos posteriores y el reloj como regulador de la vida urbana.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada7.mp3",
@@ -127,7 +127,7 @@
     {
       "id": 8,
       "title": "Torre del Carbón",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-del-carbon.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-del-carbon.webp",
       "imageAlt": "Torre del Carbón en el recinto del castillo, estructura defensiva integrada en la muralla de Jerez de los Caballeros.",
       "text": "La defensa como sistema y logística: la torre refuerza un tramo del perímetro y su nombre evoca funciones de abastecimiento dentro del recinto.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada8.mp3",
@@ -140,7 +140,7 @@
     {
       "id": 9,
       "title": "Torre de Armas",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-de-armas.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-de-armas.webp",
       "imageAlt": "Torre de Armas en la Plaza de la Alcazaba, punto estratégico del recinto fortificado de Jerez de los Caballeros.",
       "text": "En el corazón defensivo, “armas” significa preparación: equipamiento, custodia y coordinación. Una referencia sólida dentro del sistema fortificado.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada9.mp3",
@@ -153,7 +153,7 @@
     {
       "id": 10,
       "title": "Torre del Homenaje (Torre Sangrienta)",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-sangrienta.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/torre-sangrienta.webp",
       "imageAlt": "Torre del Homenaje o Torre Sangrienta, la más imponente del castillo, con fábrica de mampostería y acceso pequeño de control.",
       "text": "La torre más imponente: robustez, acceso pequeño, bóveda de cañón apuntado con lajas, aspilleras y leyendas templarias que forman parte de la memoria local.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada10.mp3",
@@ -166,7 +166,7 @@
     {
       "id": 11,
       "title": "Ermita de Santa Lucía (Parque de Santa Lucía)",
-      "imageUrl": "/api/media/jerez-monumental-arte-sacro/parque-santa.jpg",
+      "imageUrl": "/api/media/jerez-monumental-arte-sacro/parque-santa.webp",
       "imageAlt": "Ermita de Santa Lucía en el Parque de Santa Lucía, entorno abierto de paseo en Jerez de los Caballeros.",
       "text": "Cierre sobre transformación patrimonial: antiguo enclave devocional, ruina, reconstrucción y cambio de uso; memoria como luz que ilumina cambios y contradicciones.",
       "audioUrl": "/api/media/jerez-monumental-arte-sacro/parada11.mp3",
