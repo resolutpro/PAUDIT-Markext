@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useRoute, Link } from "wouter";
 import {
   ChevronLeft,
-  Share2,
   Map as MapIcon,
   Route as RouteIcon,
   Clock,
@@ -25,8 +24,8 @@ interface RouteData {
   slug: string;
   title: string;
   municipality: string;
-  distance?: string; 
-  duration?: string;  
+  distance?: string;
+  duration?: string;
   difficulty?: string;
   stops: Stop[];
 }
@@ -92,7 +91,6 @@ export default function RouteDetail() {
     );
   }
 
-  // Placeholder static values since we don't have these in the detailed JSON yet
   const distance = routeData.distance || "No especificada";
   const duration = routeData.duration || "No especificada";
   const difficulty = routeData.difficulty || "No especificado";
@@ -106,18 +104,14 @@ export default function RouteDetail() {
             <ChevronLeft className="h-6 w-6" />
           </Link>
         </Button>
+
         <div className="text-center flex-1 truncate px-2">
           <h1 className="text-base font-bold truncate">{routeData.title}</h1>
           <p className="text-xs text-primary font-medium">PAUDIT V1.0</p>
         </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="rounded-full"
-          aria-label="Compartir ruta"
-        >
-          <Share2 className="h-5 w-5" />
-        </Button>
+
+        {/* Espaciador invisible para mantener el título centrado al quitar el botón */}
+        <div className="w-10"></div>
       </div>
 
       <div className="container max-w-3xl mx-auto px-4 py-6">
@@ -156,48 +150,49 @@ export default function RouteDetail() {
             </span>
           </div>
 
-          <div className="space-y-3" role="list">
+          <ul className="space-y-3">
             {routeData.stops.map((stop, index) => (
-              <Link key={stop.id} href={`/rutas/${slug}/${stop.id}`}>
-                <a
-                  className="group flex items-center p-3 pr-4 bg-card border border-border/50 hover:border-primary/50 rounded-xl transition-all"
-                  role="listitem"
-                >
-                  <div className="relative mr-4 shrink-0">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden">
-                      <img
-                        src={stop.imageUrl}
-                        alt=""
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        aria-hidden="true"
-                      />
+              <li key={stop.id}>
+                <Link href={`/rutas/${slug}/${stop.id}`}>
+                  <a className="group flex items-center p-3 pr-4 bg-card border border-border/50 hover:border-primary/50 rounded-xl transition-all">
+                    <div className="relative mr-4 shrink-0">
+                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted">
+                        <img
+                          src={stop.imageUrl}
+                          alt={
+                            stop.imageAlt ||
+                            `Fotografía representativa de ${stop.title}`
+                          }
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold shadow-sm ring-2 ring-background">
+                        {index + 1}
+                      </div>
                     </div>
-                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold shadow-sm ring-2 ring-background">
-                      {index + 1}
-                    </div>
-                  </div>
 
-                  <div className="flex-1 min-w-0 pr-4">
-                    <h3 className="font-bold text-base truncate group-hover:text-primary transition-colors">
-                      {stop.title}
-                    </h3>
-                    <div className="flex gap-2 text-xs text-muted-foreground mt-1">
-                      <span className="flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
-                        Audio
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
-                        LSE
-                      </span>
+                    <div className="flex-1 min-w-0 pr-4">
+                      <h3 className="font-bold text-base truncate group-hover:text-primary transition-colors">
+                        {stop.title}
+                      </h3>
+                      <div className="flex gap-2 text-xs text-muted-foreground mt-1">
+                        <span className="flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
+                          Audio
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
+                          LSE
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground/50 group-hover:text-primary transition-colors shrink-0" />
-                </a>
-              </Link>
+                    <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground/50 group-hover:text-primary transition-colors shrink-0" />
+                  </a>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
 

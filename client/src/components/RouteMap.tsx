@@ -64,40 +64,42 @@ export function RouteMap({ stops }: RouteMapProps) {
   };
 
   return (
-    <MapContainer
-      className="w-full h-full z-0 rounded-2xl"
-      // Quitamos center y zoom fijos porque los maneja MapBoundsFit
-    >
-      <MapBoundsFit bounds={bounds} />
+    <div aria-hidden="true" className="w-full h-full">
+      <MapContainer
+        className="w-full h-full z-0 rounded-2xl"
+        // Quitamos center y zoom fijos porque los maneja MapBoundsFit
+      >
+        <MapBoundsFit bounds={bounds} />
 
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
 
-      {/* Dibuja una línea conectando las paradas */}
-      <Polyline
-        positions={routeLine}
-        color="hsl(var(--primary))"
-        weight={4}
-        opacity={0.6}
-        dashArray="10, 10" // Opcional: hace que la línea sea punteada, puedes quitarlo si la prefieres continua
-      />
+        {/* Dibuja una línea conectando las paradas */}
+        <Polyline
+          positions={routeLine}
+          color="hsl(var(--primary))"
+          weight={4}
+          opacity={0.6}
+          dashArray="10, 10" // Opcional: hace que la línea sea punteada, puedes quitarlo si la prefieres continua
+        />
 
-      {/* Dibuja los marcadores numerados */}
-      {validStops.map((stop, index) => (
-        <Marker
-          key={stop.id}
-          position={stop.coordinates!}
-          icon={createNumberedIcon(index + 1)}
-        >
-          <Popup>
-            <strong className="text-sm">
-              {index + 1}. {stop.title}
-            </strong>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+        {/* Dibuja los marcadores numerados */}
+        {validStops.map((stop, index) => (
+          <Marker
+            key={stop.id}
+            position={stop.coordinates!}
+            icon={createNumberedIcon(index + 1)}
+          >
+            <Popup>
+              <strong className="text-sm">
+                {index + 1}. {stop.title}
+              </strong>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
   );
 }
