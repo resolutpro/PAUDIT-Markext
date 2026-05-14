@@ -203,42 +203,43 @@ export default function RouteDetail() {
           <ul className="space-y-3">
             {routeData.stops.map((stop, index) => (
               <li key={stop.id}>
-                <Link href={`/rutas/${slug}/${stop.id}`}>
-                  <a className="group flex items-center p-3 pr-4 bg-card border border-border/50 hover:border-primary/50 rounded-xl transition-all">
-                    <div className="relative mr-4 shrink-0">
-                      <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted">
-                        <img
-                          src={stop.imageUrl}
-                          alt={
-                            stop.imageAlt ||
-                            `Fotografía representativa de ${stop.title}`
-                          }
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold shadow-sm ring-2 ring-background">
-                        {index + 1}
-                      </div>
+                <Link
+                  href={`/rutas/${slug}/${stop.id}`}
+                  className="group flex items-center p-3 pr-4 bg-card border border-border/50 hover:border-primary/50 rounded-xl transition-all"
+                >
+                  <div className="relative mr-4 shrink-0">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden bg-muted">
+                      <img
+                        src={stop.imageUrl}
+                        alt={
+                          stop.imageAlt ||
+                          `Fotografía representativa de ${stop.title}`
+                        }
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
                     </div>
-
-                    <div className="flex-1 min-w-0 pr-4">
-                      <h3 className="font-bold text-base truncate group-hover:text-primary transition-colors">
-                        {stop.title}
-                      </h3>
-                      <div className="flex gap-2 text-xs text-muted-foreground mt-1">
-                        <span className="flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
-                          Audio
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
-                          LSE
-                        </span>
-                      </div>
+                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xs font-bold shadow-sm ring-2 ring-background">
+                      {index + 1}
                     </div>
+                  </div>
 
-                    <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground/50 group-hover:text-primary transition-colors shrink-0" />
-                  </a>
+                  <div className="flex-1 min-w-0 pr-4">
+                    <h3 className="font-bold text-base truncate group-hover:text-primary transition-colors">
+                      {stop.title}
+                    </h3>
+                    <div className="flex gap-2 text-xs text-muted-foreground mt-1">
+                      <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
+                        Audio
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>{" "}
+                        LSE
+                      </span>
+                    </div>
+                  </div>
+
+                  <ChevronLeft className="h-5 w-5 rotate-180 text-muted-foreground/50 group-hover:text-primary transition-colors shrink-0" />
                 </Link>
               </li>
             ))}

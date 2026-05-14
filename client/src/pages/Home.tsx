@@ -123,61 +123,62 @@ export default function Home() {
                       </div>
                     )}
 
-                    <Link href={`/rutas/${route.slug}`}>
-                      <a className="group block relative overflow-hidden rounded-2xl bg-card hover-elevate transition-all border border-border/50 h-full flex flex-col">
-                        <div className="h-48 overflow-hidden relative shrink-0">
-                          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
-                          <img
-                            src={route.image}
-                            alt=""
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            aria-hidden="true"
-                            loading="lazy"
-                          />
-                          {idx === 0 && (
-                            <div className="absolute top-4 left-4 z-20 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                              Más Popular
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-5 flex flex-col flex-1">
-                          <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
-                            {route.title}
-                          </h3>
-                          <p className="text-muted-foreground text-sm mb-4">
-                            {route.municipality} • {route.duration}
-                          </p>
-
-                          <div className="flex items-center justify-between mt-auto pt-2">
-                            <div
-                              className="flex gap-2 text-primary"
-                              aria-label="Recursos de accesibilidad disponibles"
-                            >
-                              {route.flags.audio && (
-                                <Ear
-                                  className="h-5 w-5"
-                                  aria-label="Audioguía"
-                                />
-                              )}
-                              {route.flags.lse && (
-                                <HandMetal
-                                  className="h-5 w-5"
-                                  aria-label="Lengua de Signos"
-                                />
-                              )}
-                              {route.flags.easyRead && (
-                                <BookOpen
-                                  className="h-5 w-5"
-                                  aria-label="Lectura Fácil"
-                                />
-                              )}
-                            </div>
-                            <span className="text-sm font-medium bg-secondary px-3 py-1 rounded-full">
-                              {route.stopCount} paradas
-                            </span>
+                    <Link
+                      href={`/rutas/${route.slug}`}
+                      className="group block relative overflow-hidden rounded-2xl bg-card hover-elevate transition-all border border-border/50 h-full flex flex-col"
+                    >
+                      <div className="h-48 overflow-hidden relative shrink-0">
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
+                        <img
+                          src={route.image}
+                          alt=""
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          aria-hidden="true"
+                          loading="lazy"
+                        />
+                        {idx === 0 && (
+                          <div className="absolute top-4 left-4 z-20 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Más Popular
                           </div>
+                        )}
+                      </div>
+                      <div className="p-5 flex flex-col flex-1">
+                        <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
+                          {route.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm mb-4">
+                          {route.municipality} • {route.duration}
+                        </p>
+
+                        <div className="flex items-center justify-between mt-auto pt-2">
+                          <div
+                            className="flex gap-2 text-primary"
+                            aria-label="Recursos de accesibilidad disponibles"
+                          >
+                            {route.flags.audio && (
+                              <Ear
+                                className="h-5 w-5"
+                                aria-label="Audioguía"
+                              />
+                            )}
+                            {route.flags.lse && (
+                              <HandMetal
+                                className="h-5 w-5"
+                                aria-label="Lengua de Signos"
+                              />
+                            )}
+                            {route.flags.easyRead && (
+                              <BookOpen
+                                className="h-5 w-5"
+                                aria-label="Lectura Fácil"
+                              />
+                            )}
+                          </div>
+                          <span className="text-sm font-medium bg-secondary px-3 py-1 rounded-full">
+                            {route.stopCount} paradas
+                          </span>
                         </div>
-                      </a>
+                      </div>
                     </Link>
                   </React.Fragment>
                 ))
