@@ -29,5 +29,65 @@
       "lse": true,
       "easyRead": true
     }
+  },
+  {
+    "id": "3",
+    "slug": "ruta-accesible-1-san-miguel",
+    "title": "Ruta Accesible 1: Vasco Núñez y San Miguel",
+    "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+    "summary": "Ruta adaptada para personas con movilidad reducida. Inicia en el Monumento a Vasco Núñez de Balboa, pasando por la Puerta de Burgos y culminando en la Parroquia de San Miguel.",
+    "image": "/api/media/rutas-accesibles/ruta1-06-iglesia-san-miguel.jpg",
+    "stopCount": 6,
+    "pdfGuide": "/rutas-accesibles.pdf",
+    "flags": {
+      "audio": false,
+      "lse": false,
+      "easyRead": false
+    }
+  },
+  {
+    "id": "4",
+    "slug": "ruta-accesible-2-alcazaba",
+    "title": "Ruta Accesible 2: Santa María y La Alcazaba",
+    "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+    "summary": "Paseo accesible desde el centro hacia el Parque de Santa Lucía y la Iglesia de Santa María de la Encarnación, finalizando en la histórica Plaza de la Alcazaba y la Torre del Homenaje.",
+    "image": "/api/media/rutas-accesibles/ruta2-08-plaza-alcazaba.jpg",
+    "stopCount": 8,
+    "pdfGuide": "/rutas-accesibles.pdf",
+    "flags": {
+      "audio": false,
+      "lse": false,
+      "easyRead": false
+    }
+  },
+  {
+    "id": "5",
+    "slug": "ruta-accesible-3-san-bartolome",
+    "title": "Ruta Accesible 3: Calles Antiguas y San Bartolomé",
+    "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+    "summary": "Recorrido sin barreras por las calles más antiguas de Jerez. Observa la Casa de la Iglesia, las traseras de San Miguel y finaliza en el entorno de la Iglesia de San Bartolomé.",
+    "image": "/api/media/rutas-accesibles/ruta3-06-iglesia-san-bartolome.jpg",
+    "stopCount": 6,
+    "pdfGuide": "/rutas-accesibles.pdf",
+    "flags": {
+      "audio": false,
+      "lse": false,
+      "easyRead": false
+    }
+  },
+  {
+    "id": "6",
+    "slug": "ruta-accesible-4-santa-catalina",
+    "title": "Ruta Accesible 4: Puerta de la Villa y Santa Catalina",
+    "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+    "summary": "Ruta con gran encanto por calles menos transitadas. Descubre la Capilla de San Antonio (Puerta de la Villa) y maravíllate con la arquitectura exterior de la Parroquia de Santa Catalina.",
+    "image": "/api/media/rutas-accesibles/ruta4-08-iglesia-santa-catalina.jpg",
+    "stopCount": 8,
+    "pdfGuide": "/rutas-accesibles.pdf",
+    "flags": {
+      "audio": false,
+      "lse": false,
+      "easyRead": false
+    }
   }
 ]

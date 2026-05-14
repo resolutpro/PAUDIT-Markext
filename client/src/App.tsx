@@ -9,6 +9,7 @@ import NotFound from "@/pages/not-found";
 // Components
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // Pages
 import Home from "@/pages/Home";
@@ -21,6 +22,9 @@ import ManualTransferencia from "@/pages/ManualTransferencia";
 function Router() {
   return (
     <>
+      {/* Componente que fuerza el scroll hacia arriba al cambiar de ruta */}
+      <ScrollToTop />
+
       <Navigation />
       <Switch>
         <Route path="/" component={Home} />

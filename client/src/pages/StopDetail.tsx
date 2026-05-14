@@ -201,26 +201,29 @@ export default function StopDetail() {
             </div>
           )}
 
-          <div
-            className="flex bg-secondary p-1 rounded-lg mb-6 max-w-sm"
-            role="group"
-            aria-label="Nivel de lectura"
-          >
-            <button
-              onClick={() => setPreferEasyRead(false)}
-              aria-pressed={!preferEasyRead}
-              className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${!preferEasyRead ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+          {/* Oculta los botones de cambiar de nivel de lectura si no hay texto fácil disponible */}
+          {stop.easyReadText && (
+            <div
+              className="flex bg-secondary p-1 rounded-lg mb-6 max-w-sm"
+              role="group"
+              aria-label="Nivel de lectura"
             >
-              Estándar
-            </button>
-            <button
-              onClick={() => setPreferEasyRead(true)}
-              aria-pressed={preferEasyRead}
-              className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${preferEasyRead ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
-            >
-              Lectura Fácil
-            </button>
-          </div>
+              <button
+                onClick={() => setPreferEasyRead(false)}
+                aria-pressed={!preferEasyRead}
+                className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${!preferEasyRead ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                Estándar
+              </button>
+              <button
+                onClick={() => setPreferEasyRead(true)}
+                aria-pressed={preferEasyRead}
+                className={`flex-1 py-2 text-sm font-bold rounded-md transition-all ${preferEasyRead ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+              >
+                Lectura Fácil
+              </button>
+            </div>
+          )}
 
           <div
             className="text-lg leading-relaxed transition-opacity duration-300"
@@ -248,116 +251,122 @@ export default function StopDetail() {
           </section>
         )}
 
-        {/* CONTENIDO ESTÁNDAR: Solo se muestra si NO está en Lectura Fácil */}
+        {/* CONTENIDO ESTÁNDAR: Solo se muestra si NO está en Lectura Fácil (Opcional: puedes dejar que se vea siempre quitando esto, pero mantengo tu estructura) */}
         {!preferEasyRead && (
           <div className="space-y-8 animate-in fade-in duration-500">
-            {/* Audio Guide Section */}
-            <section
-              aria-labelledby="audio-heading"
-              className="bg-card border border-border/50 rounded-2xl p-5 shadow-sm"
-            >
-              <h3 id="audio-heading" className="text-xl font-bold mb-4">
-                Audioguía
-              </h3>
-
-              <div className="bg-secondary/50 rounded-xl p-4 mb-4">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary/20 text-primary rounded-lg flex items-center justify-center">
-                      <Ear className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-sm">Narración en Español</p>
-                      <p className="text-xs text-muted-foreground">
-                        Duración:{" "}
-                        {audioDuration !== "--:--"
-                          ? audioDuration
-                          : stop.audioDuration || "--:--"}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="bg-background px-2 py-1 rounded text-xs font-bold border border-border">
-                    1.0x
-                  </span>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="w-full h-1.5 bg-border rounded-full mb-3 overflow-hidden">
-                  <div
-                    className="h-full bg-primary"
-                    style={{ width: `${audioProgress}%` }}
-                  ></div>
-                </div>
-
-                {/* Audio Controls */}
-                <div className="flex items-center justify-center gap-6">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => skipAudio(-10)}
-                    aria-label="Retroceder 10 segundos"
-                  >
-                    <RotateCcw className="h-5 w-5" />
-                  </Button>
-                  <Button
-                    size="icon"
-                    className="h-14 w-14 rounded-full shadow-lg"
-                    onClick={toggleAudio}
-                    aria-label={isPlaying ? "Pausar audio" : "Reproducir audio"}
-                  >
-                    {isPlaying ? (
-                      <Pause className="h-6 w-6" />
-                    ) : (
-                      <Play className="h-6 w-6 ml-1" />
-                    )}
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => skipAudio(10)}
-                    aria-label="Avanzar 10 segundos"
-                  >
-                    <RotateCw className="h-5 w-5" />
-                  </Button>
-                </div>
-              </div>
-
-              <Button
-                variant="outline"
-                className="w-full justify-center gap-2"
-                onClick={() => setShowTranscript(!showTranscript)}
-                aria-expanded={showTranscript}
-                aria-controls="audio-transcript"
+            {/* Audio Guide Section - Solo si hay URL de audio */}
+            {stop.audioUrl && (
+              <section
+                aria-labelledby="audio-heading"
+                className="bg-card border border-border/50 rounded-2xl p-5 shadow-sm"
               >
-                <Type className="h-4 w-4" />
-                {showTranscript
-                  ? "Ocultar Transcripción"
-                  : "Mostrar Transcripción"}
-              </Button>
-
-              {showTranscript && (
-                <div
-                  id="audio-transcript"
-                  className="mt-4 p-4 bg-muted rounded-xl text-base border border-border animate-in fade-in slide-in-from-top-4"
-                >
-                  <p className="italic">{stop.audioTranscript}</p>
-                </div>
-              )}
-            </section>
-
-            {/* Sign Language Section */}
-            <section
-              aria-labelledby="lse-heading"
-              className="bg-card border border-border/50 rounded-2xl overflow-hidden shadow-sm"
-            >
-              <div className="p-5 pb-0">
-                <h3 id="lse-heading" className="text-xl font-bold mb-4">
-                  Lengua de Signos (LSE)
+                <h3 id="audio-heading" className="text-xl font-bold mb-4">
+                  Audioguía
                 </h3>
-              </div>
 
-              <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden rounded-t-none">
-                {stop.lseVideoUrl ? (
+                <div className="bg-secondary/50 rounded-xl p-4 mb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-primary/20 text-primary rounded-lg flex items-center justify-center">
+                        <Ear className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <p className="font-bold text-sm">
+                          Narración en Español
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Duración:{" "}
+                          {audioDuration !== "--:--"
+                            ? audioDuration
+                            : stop.audioDuration || "--:--"}
+                        </p>
+                      </div>
+                    </div>
+                    <span className="bg-background px-2 py-1 rounded text-xs font-bold border border-border">
+                      1.0x
+                    </span>
+                  </div>
+
+                  {/* Progress Bar */}
+                  <div className="w-full h-1.5 bg-border rounded-full mb-3 overflow-hidden">
+                    <div
+                      className="h-full bg-primary"
+                      style={{ width: `${audioProgress}%` }}
+                    ></div>
+                  </div>
+
+                  {/* Audio Controls */}
+                  <div className="flex items-center justify-center gap-6">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => skipAudio(-10)}
+                      aria-label="Retroceder 10 segundos"
+                    >
+                      <RotateCcw className="h-5 w-5" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      className="h-14 w-14 rounded-full shadow-lg"
+                      onClick={toggleAudio}
+                      aria-label={
+                        isPlaying ? "Pausar audio" : "Reproducir audio"
+                      }
+                    >
+                      {isPlaying ? (
+                        <Pause className="h-6 w-6" />
+                      ) : (
+                        <Play className="h-6 w-6 ml-1" />
+                      )}
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => skipAudio(10)}
+                      aria-label="Avanzar 10 segundos"
+                    >
+                      <RotateCw className="h-5 w-5" />
+                    </Button>
+                  </div>
+                </div>
+
+                <Button
+                  variant="outline"
+                  className="w-full justify-center gap-2"
+                  onClick={() => setShowTranscript(!showTranscript)}
+                  aria-expanded={showTranscript}
+                  aria-controls="audio-transcript"
+                >
+                  <Type className="h-4 w-4" />
+                  {showTranscript
+                    ? "Ocultar Transcripción"
+                    : "Mostrar Transcripción"}
+                </Button>
+
+                {showTranscript && stop.audioTranscript && (
+                  <div
+                    id="audio-transcript"
+                    className="mt-4 p-4 bg-muted rounded-xl text-base border border-border animate-in fade-in slide-in-from-top-4"
+                  >
+                    <p className="italic">{stop.audioTranscript}</p>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* Sign Language Section - Solo si hay URL de LSE */}
+            {stop.lseVideoUrl && (
+              <section
+                aria-labelledby="lse-heading"
+                className="bg-card border border-border/50 rounded-2xl overflow-hidden shadow-sm"
+              >
+                <div className="p-5 pb-0">
+                  <h3 id="lse-heading" className="text-xl font-bold mb-4">
+                    Lengua de Signos (LSE)
+                  </h3>
+                </div>
+
+                <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden rounded-t-none">
                   <video
                     src={stop.lseVideoUrl}
                     controls
@@ -367,28 +376,23 @@ export default function StopDetail() {
                   >
                     Tu navegador no soporta la reproducción de vídeos.
                   </video>
-                ) : (
-                  <div className="text-muted-foreground flex flex-col items-center gap-2 opacity-50">
-                    <Play className="h-10 w-10" />
-                    <p className="text-sm font-medium">
-                      Vídeo LSE no disponible
-                    </p>
+
+                  {/* Aviso de subtítulos flotante si están activados */}
+                  {enableSubtitles && (
+                    <div className="absolute top-4 left-4 z-10 pointer-events-none"></div>
+                  )}
+                </div>
+
+                {stop.videoTranscript && (
+                  <div className="p-4 bg-secondary/30">
+                    <h4 className="text-sm font-bold text-muted-foreground mb-1 uppercase tracking-wider">
+                      Descripción del Vídeo
+                    </h4>
+                    <p className="text-sm">{stop.videoTranscript}</p>
                   </div>
                 )}
-
-                {/* Aviso de subtítulos flotante si están activados */}
-                {enableSubtitles && stop.lseVideoUrl && (
-                  <div className="absolute top-4 left-4 z-10 pointer-events-none"></div>
-                )}
-              </div>
-
-              <div className="p-4 bg-secondary/30">
-                <h4 className="text-sm font-bold text-muted-foreground mb-1 uppercase tracking-wider">
-                  Descripción del Vídeo
-                </h4>
-                <p className="text-sm">{stop.videoTranscript}</p>
-              </div>
-            </section>
+              </section>
+            )}
           </div>
         )}
       </main>

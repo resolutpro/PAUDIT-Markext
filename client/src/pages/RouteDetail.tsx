@@ -6,9 +6,12 @@ import {
   Route as RouteIcon,
   Clock,
   Navigation,
+  AlertTriangle,
+  Download,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RouteMap } from "@/components/RouteMap";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 interface Stop {
   id: number;
@@ -27,6 +30,7 @@ interface RouteData {
   distance?: string;
   duration?: string;
   difficulty?: string;
+  pdfGuide?: string; // NUEVO CAMPO: Ruta al PDF opcional
   stops: Stop[];
 }
 
@@ -115,6 +119,52 @@ export default function RouteDetail() {
       </div>
 
       <div className="container max-w-3xl mx-auto px-4 py-6">
+        {/* BLOQUE CONDICIONAL: AVISO Y DESCARGA DEL PDF */}
+        {routeData.pdfGuide && (
+          <section className="mb-6">
+            <Alert
+              variant="default"
+              className="bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-900"
+            >
+              <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+              <AlertTitle className="text-amber-800 dark:text-amber-300 font-bold ml-2">
+                Importante para tu seguridad y accesibilidad
+              </AlertTitle>
+              <AlertDescription className="mt-2 text-amber-700 dark:text-amber-400/90">
+                <p className="mb-4">
+                  El mapa interactivo muestra la ubicación de las paradas, pero
+                  el trazado generado automáticamente por el GPS
+                  <strong> puede no ser 100% accesible</strong> al no detectar
+                  barreras arquitectónicas o calles con mucha pendiente.
+                </p>
+                <div className="flex flex-col md:flex-row items-center gap-4 bg-white/50 dark:bg-black/20 p-4 rounded-xl border border-amber-200/50">
+                  <div className="flex-1">
+                    <p className="text-sm font-medium">
+                      Para garantizar una experiencia sin barreras, te
+                      recomendamos descargar y seguir el trazado verificado por
+                      <strong> Plena Inclusión Xerez</strong>.
+                    </p>
+                  </div>
+                  <Button
+                    asChild
+                    className="bg-amber-600 hover:bg-amber-700 text-white shrink-0 gap-2"
+                  >
+                    <a
+                      href={routeData.pdfGuide}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download
+                    >
+                      <Download className="h-4 w-4" />
+                      Descargar Guía PDF
+                    </a>
+                  </Button>
+                </div>
+              </AlertDescription>
+            </Alert>
+          </section>
+        )}
+
         {/* Mapa interactivo */}
         <div className="w-full h-64 md:h-80 border border-border/50 rounded-2xl mb-6 relative overflow-hidden shadow-sm">
           <RouteMap stops={routeData.stops} />
@@ -203,7 +253,7 @@ export default function RouteDetail() {
           className="w-full max-w-md h-14 text-lg font-bold shadow-lg gap-2"
           asChild
         >
-          <Link href={`/rutas/${slug}/1`}>
+          <Link href={`/rutas/${slug}/0`}>
             <Navigation className="h-5 w-5" />
             Empezar Ruta
           </Link>

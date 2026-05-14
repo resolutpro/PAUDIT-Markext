@@ -1,0 +1,78 @@
+{
+  "_help": {
+    "title": "Título de la ruta. Muestra el nombre principal.",
+    "municipality": "Municipio donde se encuentra.",
+    "stops": "Array de paradas de la ruta.",
+    "stop.title": "Nombre de la parada específica.",
+    "stop.text": "Texto descriptivo de la parada.",
+    "stop.audioUrl": "URL completa al archivo de audio (ej. mp3) alojado externamente.",
+    "stop.audioTranscript": "Transcripción textual del audio para accesibilidad.",
+    "stop.lseVideoUrl": "URL completa al vídeo en LSE (Lengua de Signos Española) alojado externamente (ej. mp4).",
+    "stop.videoTranscript": "Transcripción o subtítulos del vídeo en LSE.",
+    "stop.imageUrl": "URL de la imagen representativa de la parada.",
+    "stop.imageAlt": "Texto alternativo para la imagen, obligatorio por accesibilidad.",
+    "stop.easyReadText": "Texto en versión fácil de leer para personas con dificultades de lectura."
+  },
+  "id": "3",
+  "slug": "ruta-accesible-1-san-miguel",
+  "title": "Ruta Accesible 1: Vasco Núñez y San Miguel",
+  "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+  "difficulty": "Fácil",
+  "pdfGuide": "/rutas-accesibles.pdf",
+  "stops": [
+    {
+      "id": 0,
+      "title": "Plaza Vasco Núñez de Balboa",
+      "imageUrl": "/api/media/rutas-accesibles/ruta1-01-plaza-vasco-nunez.jpg",
+      "imageAlt": "Monumento a Vasco Núñez de Balboa en la plaza homónima",
+      "text": "En esta primera ruta adaptada podemos observar el Monumento a Vasco Núñez de Balboa, marcando el inicio de nuestro recorrido accesible. Desde aquí emprenderemos el camino hacia el centro.",
+      "coordinates": [38.32350098608635, -6.765671886942085],
+      "easyReadText": "Aquí empieza la ruta.\n\nEn esta plaza puedes ver la estatua de Vasco Núñez de Balboa."
+    },
+    {
+      "id": 1,
+      "title": "C/ Corredera Hernando de Soto",
+      "imageUrl": "/api/media/rutas-accesibles/ruta1-02-calle-corredera.jpg",
+      "imageAlt": "Fachada del convento de las Hermanas de la Cruz",
+      "text": "Avanzando por la calle Corredera Hernando de Soto, podemos contemplar la histórica fachada del convento de las Hermanas de la Cruz. Una vía recta y cómoda para el tránsito.",
+      "coordinates": [38.32241032735922, -6.767311048811121],
+      "easyReadText": "Paseando por esta calle puedes ver la entrada al edificio de las Hermanas de la Cruz."
+    },
+    {
+      "id": 2,
+      "title": "Puerta de Burgos",
+      "imageUrl": "/api/media/rutas-accesibles/ruta1-03-puerta-burgos.jpg",
+      "imageAlt": "Torreón y sección de muralla de la Puerta de Burgos",
+      "text": "Llegamos a la Puerta de Burgos, uno de los accesos históricos a la antigua villa. Está formada por un imponente torreón y una sección de la muralla original que defendía la ciudad.",
+      "coordinates": [38.321608330372214, -6.7685674848442865],
+      "easyReadText": "Esta es la Puerta de Burgos.\n\nTiene una torre muy grande y un trozo de muralla antigua que protegía la ciudad."
+    },
+    {
+      "id": 3,
+      "title": "C/ Vasco Núñez de Balboa",
+      "imageUrl": "/api/media/rutas-accesibles/ruta1-04-calle-vasco-nunez.jpg",
+      "imageAlt": "Vista de la calle Vasco Núñez de Balboa",
+      "text": "Continuamos el trayecto por la Calle Vasco Núñez de Balboa. Esta vía de tránsito nos conecta directamente con la zona más monumental y el centro histórico del municipio de manera accesible.",
+      "coordinates": [38.32084198266687, -6.769674542359472],
+      "easyReadText": "Paseamos por esta calle para llegar cómodamente al centro del pueblo."
+    },
+    {
+      "id": 4,
+      "title": "Plaza de España",
+      "imageUrl": "/api/media/rutas-accesibles/ruta1-05-plaza-espana.jpg",
+      "imageAlt": "Vista general de la Plaza de España de Jerez de los Caballeros",
+      "text": "Alcanzamos la Plaza de España, el centro neurálgico de la localidad. Un espacio muy amplio, llano y plenamente accesible para transitar cómodamente y observar el entorno.",
+      "coordinates": [38.320193600676234, -6.77133282807095],
+      "easyReadText": "Hemos llegado a la Plaza de España.\n\nEs la plaza principal del pueblo y tiene mucho espacio para moverse sin problemas."
+    },
+    {
+      "id": 5,
+      "title": "Iglesia San Miguel",
+      "imageUrl": "/api/media/rutas-accesibles/ruta1-06-iglesia-san-miguel.jpg",
+      "imageAlt": "Fachada exterior de la Iglesia de San Miguel",
+      "text": "Por último, en la misma Plaza de España se encuentra la Parroquia de San Miguel. Desde el exterior podemos admirar su bella fachada y los detalles arquitectónicos de su torre barroca, cerrando este recorrido.",
+      "coordinates": [38.320380760722585, -6.771420353976228],
+      "easyReadText": "Aquí termina la ruta.\n\nEstamos frente a la gran Iglesia de San Miguel y puedes ver su bonita torre desde fuera."
+    }
+  ]
+}

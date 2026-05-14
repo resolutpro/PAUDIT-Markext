@@ -1,0 +1,102 @@
+{
+  "_help": {
+    "title": "Título de la ruta. Muestra el nombre principal.",
+    "municipality": "Municipio donde se encuentra.",
+    "stops": "Array de paradas de la ruta.",
+    "stop.title": "Nombre de la parada específica.",
+    "stop.text": "Texto descriptivo de la parada.",
+    "stop.audioUrl": "URL completa al archivo de audio (ej. mp3) alojado externamente.",
+    "stop.audioTranscript": "Transcripción textual del audio para accesibilidad.",
+    "stop.lseVideoUrl": "URL completa al vídeo en LSE (Lengua de Signos Española) alojado externamente (ej. mp4).",
+    "stop.videoTranscript": "Transcripción o subtítulos del vídeo en LSE.",
+    "stop.imageUrl": "URL de la imagen representativa de la parada.",
+    "stop.imageAlt": "Texto alternativo para la imagen, obligatorio por accesibilidad.",
+    "stop.easyReadText": "Texto en versión fácil de leer para personas con dificultades de lectura."
+  },
+  "id": "5",
+  "slug": "ruta-accesible-3-san-bartolome",
+  "title": "Ruta Accesible 3: Calles Antiguas y San Bartolomé",
+  "municipality": "Jerez de los Caballeros, Badajoz (Extremadura)",
+  "difficulty": "Fácil",
+  "pdfGuide": "/rutas-accesibles.pdf",
+  "stops": [
+    {
+      "id": 0,
+      "title": "Plaza de España",
+      "imageUrl": "/api/media/rutas-accesibles/ruta3-01-plaza-espana.jpg",
+      "imageAlt": "Plaza de España en el centro de Jerez de los Caballeros",
+      "text": "Inicio de la ruta desde la céntrica Plaza de España, un punto de partida llano y accesible para adentrarnos cómodamente en el entramado de calles de gran antigüedad de la localidad.",
+      "audioUrl": "",
+      "audioTranscript": "",
+      "lseVideoUrl": "",
+      "videoTranscript": "",
+      "coordinates": [38.32021176736098, -6.771304813535705],
+      "easyReadText": "Empezamos la ruta en la Plaza de España.\n\nDesde aquí vamos a visitar algunas de las calles más antiguas del pueblo."
+    },
+    {
+      "id": 1,
+      "title": "Plaza de la Constitución",
+      "imageUrl": "/api/media/rutas-accesibles/ruta3-02-plaza-constitucion.jpg",
+      "imageAlt": "Vista de la Plaza de la Constitución",
+      "text": "Avanzamos hacia la Plaza de la Constitución, un espacio que conecta el centro moderno con el casco histórico sin encontrar grandes barreras arquitectónicas.",
+      "audioUrl": "",
+      "audioTranscript": "",
+      "lseVideoUrl": "",
+      "videoTranscript": "",
+      "coordinates": [38.320488234717715, -6.771777071199363],
+      "easyReadText": "Pasamos por la Plaza de la Constitución.\n\nEs un lugar antiguo y tranquilo para pasear sin prisas."
+    },
+    {
+      "id": 2,
+      "title": "Calle María Pilar Lasarte",
+      "imageUrl": "/api/media/rutas-accesibles/ruta3-03-calle-pilar-lasarte.jpg",
+      "imageAlt": "Traseras de la Parroquia de San Miguel desde la calle",
+      "text": "Recorriendo la Calle María Pilar Lasarte, podemos observar una perspectiva diferente de la arquitectura religiosa: aquí vemos la imponente parte posterior de la Parroquia de San Miguel y la fachada de la histórica Casa de la Iglesia.",
+      "audioUrl": "",
+      "audioTranscript": "",
+      "lseVideoUrl": "",
+      "videoTranscript": "",
+      "coordinates": [38.32073211584972, -6.771896922798918],
+      "easyReadText": "Paseamos por esta calle.\n\nAquí podemos ver la parte de atrás de la Iglesia de San Miguel y la Casa de la Iglesia."
+    },
+    {
+      "id": 3,
+      "title": "Travesía y Calle Oliva",
+      "imageUrl": "/api/media/rutas-accesibles/ruta3-04-calle-oliva.jpg",
+      "imageAlt": "Calle tradicional de Jerez de los Caballeros",
+      "text": "En este tramo pasamos junto a la Casa de la Hermandad Cofradía del Señor Ecce-Homo, edificio significativo en la tradición religiosa local. Un poco más adelante, en la calle Oliva, se encuentran las instalaciones del museo dedicado al descubridor Vasco Núñez de Balboa.",
+      "audioUrl": "",
+      "audioTranscript": "",
+      "lseVideoUrl": "",
+      "videoTranscript": "",
+      "coordinates": [38.32128505705607, -6.7720925746122544],
+      "easyReadText": "Caminamos por estas calles con casas muy importantes.\n\nEn esta zona está la Casa de la Hermandad y el museo de Vasco Núñez de Balboa."
+    },
+    {
+      "id": 4,
+      "title": "Calle Llano de San Bartolomé",
+      "imageUrl": "/api/media/rutas-accesibles/ruta3-05-llano-san-bartolome.jpg",
+      "imageAlt": "Calle Llano de San Bartolomé",
+      "text": "Llegamos a la calle Llano de San Bartolomé, un espacio que hace honor a su nombre por ser amplio, accesible y servir de antesala antes de llegar a la gran iglesia que corona el barrio.",
+      "audioUrl": "",
+      "audioTranscript": "",
+      "lseVideoUrl": "",
+      "videoTranscript": "",
+      "coordinates": [38.32221006864232, -6.7717857442262375],
+      "easyReadText": "Llegamos a una calle ancha y cómoda para pasear.\n\nYa casi estamos al final de nuestra ruta."
+    },
+    {
+      "id": 5,
+      "title": "Iglesia de San Bartolomé",
+      "imageUrl": "/api/media/rutas-accesibles/ruta3-06-iglesia-san-bartolome.jpg",
+      "imageAlt": "Fachada y detalles exteriores de la Iglesia de San Bartolomé",
+      "text": "Fin del recorrido. Aunque el acceso al interior de algunas iglesias tenga obstáculos que una persona en silla de ruedas no puede salvar fácilmente, desde la plaza podemos admirar cómodamente sus espectaculares fachadas y detalles cerámicos.",
+      "audioUrl": "",
+      "audioTranscript": "",
+      "lseVideoUrl": "",
+      "videoTranscript": "",
+      "coordinates": [38.32212555267314, -6.771644186945453],
+      "easyReadText": "Aquí termina nuestra ruta.\n\nEstamos frente a la bonita Iglesia de San Bartolomé. Podemos ver todos sus detalles desde la calle."
+    }
+  ]
+}

@@ -1,6 +1,14 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { Search, Info, Ear, HandMetal, BookOpen } from "lucide-react";
+import {
+  Search,
+  Info,
+  Ear,
+  HandMetal,
+  BookOpen,
+  Heart,
+  ExternalLink,
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -89,59 +97,89 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredRoutes.length > 0 ? (
                 filteredRoutes.map((route, idx) => (
-                  <Link key={route.id} href={`/rutas/${route.slug}`}>
-                    <a className="group block relative overflow-hidden rounded-2xl bg-card hover-elevate transition-all border border-border/50">
-                      <div className="h-48 overflow-hidden relative">
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
-                        <img
-                          src={route.image}
-                          alt=""
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          aria-hidden="true"
-                          loading="lazy"
-                        />
-                        {idx === 0 && (
-                          <div className="absolute top-4 left-4 z-20 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                            Más Popular
-                          </div>
-                        )}
-                      </div>
-                      <div className="p-5">
-                        <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
-                          {route.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm mb-4">
-                          {route.municipality} • {route.duration}
-                        </p>
-
-                        <div className="flex items-center justify-between mt-auto">
-                          <div
-                            className="flex gap-2 text-primary"
-                            aria-label="Recursos de accesibilidad disponibles"
-                          >
-                            {route.flags.audio && (
-                              <Ear className="h-5 w-5" aria-label="Audioguía" />
-                            )}
-                            {route.flags.lse && (
-                              <HandMetal
-                                className="h-5 w-5"
-                                aria-label="Lengua de Signos"
-                              />
-                            )}
-                            {route.flags.easyRead && (
-                              <BookOpen
-                                className="h-5 w-5"
-                                aria-label="Lectura Fácil"
-                              />
-                            )}
-                          </div>
-                          <span className="text-sm font-medium bg-secondary px-3 py-1 rounded-full">
-                            {route.stopCount} paradas
-                          </span>
+                  <React.Fragment key={route.id}>
+                    {/* BANNER SEPARADOR - Se muestra justo antes de la 3ª ruta (índice 2) */}
+                    {idx === 2 && !searchQuery && (
+                      <div className="col-span-full mt-4 mb-2 p-6 bg-primary/5 border border-primary/20 rounded-2xl flex flex-col md:flex-row gap-5 items-start md:items-center">
+                        <div className="p-3 bg-white rounded-full shadow-sm border border-border shrink-0">
+                          <Heart className="h-6 w-6 text-primary fill-current" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-foreground mb-1">
+                            Rutas de Movilidad Reducida
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            Las siguientes rutas han sido trazadas e
+                            identificadas en colaboración con el{" "}
+                            <strong>
+                              Programa de apoyo al envejecimiento activo
+                            </strong>{" "}
+                            de{" "}
+                            <strong>Plena Inclusión Xerez Extremadura</strong>.
+                            Están diseñadas físicamente sin barreras
+                            arquitectónicas para garantizar un recorrido seguro.
+                          </p>
                         </div>
                       </div>
-                    </a>
-                  </Link>
+                    )}
+
+                    <Link href={`/rutas/${route.slug}`}>
+                      <a className="group block relative overflow-hidden rounded-2xl bg-card hover-elevate transition-all border border-border/50 h-full flex flex-col">
+                        <div className="h-48 overflow-hidden relative shrink-0">
+                          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
+                          <img
+                            src={route.image}
+                            alt=""
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            aria-hidden="true"
+                            loading="lazy"
+                          />
+                          {idx === 0 && (
+                            <div className="absolute top-4 left-4 z-20 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                              Más Popular
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-5 flex flex-col flex-1">
+                          <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
+                            {route.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm mb-4">
+                            {route.municipality} • {route.duration}
+                          </p>
+
+                          <div className="flex items-center justify-between mt-auto pt-2">
+                            <div
+                              className="flex gap-2 text-primary"
+                              aria-label="Recursos de accesibilidad disponibles"
+                            >
+                              {route.flags.audio && (
+                                <Ear
+                                  className="h-5 w-5"
+                                  aria-label="Audioguía"
+                                />
+                              )}
+                              {route.flags.lse && (
+                                <HandMetal
+                                  className="h-5 w-5"
+                                  aria-label="Lengua de Signos"
+                                />
+                              )}
+                              {route.flags.easyRead && (
+                                <BookOpen
+                                  className="h-5 w-5"
+                                  aria-label="Lectura Fácil"
+                                />
+                              )}
+                            </div>
+                            <span className="text-sm font-medium bg-secondary px-3 py-1 rounded-full">
+                              {route.stopCount} paradas
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </Link>
+                  </React.Fragment>
                 ))
               ) : (
                 <div className="col-span-full py-12 text-center text-muted-foreground bg-card rounded-2xl">

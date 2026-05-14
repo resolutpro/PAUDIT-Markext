@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'wouter';
-import { Ear, HandMetal, BookOpen, MapPin, Clock } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useEffect, useState } from "react";
+import { Link } from "wouter";
+import { Ear, HandMetal, BookOpen, MapPin, Clock, Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface RouteSummary {
   id: string;
@@ -24,31 +24,57 @@ export default function RouteList() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/routes')
-      .then(res => res.json())
-      .then(data => {
+    fetch("/api/routes")
+      .then((res) => res.json())
+      .then((data) => {
         setRoutes(data);
         setIsLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("Error loading routes:", err);
         setIsLoading(false);
       });
   }, []);
 
   return (
-    <main id="main-content" className="pb-24 md:pb-12 pt-6 container px-4 max-w-5xl mx-auto animate-in fade-in duration-300">
+    <main
+      id="main-content"
+      className="pb-24 md:pb-12 pt-6 container px-4 max-w-5xl mx-auto animate-in fade-in duration-300"
+    >
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold mb-3">Explorar Rutas</h1>
         <p className="text-lg text-muted-foreground">
-          Descubre el patrimonio cultural a tu propio ritmo con contenido 100% accesible.
+          Descubre el patrimonio cultural a tu propio ritmo con contenido 100%
+          accesible.
         </p>
       </header>
 
+      <div className="mb-8 p-5 bg-primary/5 border border-primary/20 rounded-2xl flex flex-col md:flex-row gap-4 items-start md:items-center">
+        <div className="p-3 bg-primary/10 rounded-full shrink-0">
+          <Info className="h-6 w-6 text-primary" />
+        </div>
+        <div>
+          <h3 className="text-lg font-bold text-foreground mb-1">
+            Rutas de Accesibilidad Universal
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Las rutas accesibles para personas con problemas de movilidad han
+            sido desarrolladas como una iniciativa del{" "}
+            <strong>"Programa de apoyo al envejecimiento activo"</strong>, en
+            colaboración con <strong>Plena Inclusión Xerez Extremadura</strong>.
+            Han sido trazadas sobre el terreno para identificar barreras
+            arquitectónicas y garantizar un recorrido seguro e integrador.
+          </p>
+        </div>
+      </div>
+
       {isLoading ? (
         <div className="space-y-6">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="flex flex-col md:flex-row gap-4 h-auto md:h-48 rounded-2xl bg-card border border-border p-4 animate-pulse">
+          {[1, 2, 3].map((i) => (
+            <div
+              key={i}
+              className="flex flex-col md:flex-row gap-4 h-auto md:h-48 rounded-2xl bg-card border border-border p-4 animate-pulse"
+            >
               <div className="w-full md:w-64 h-48 md:h-full bg-secondary rounded-xl" />
               <div className="flex-1 py-2 space-y-4">
                 <div className="h-6 w-3/4 bg-secondary rounded" />
@@ -59,52 +85,94 @@ export default function RouteList() {
           ))}
         </div>
       ) : (
-        <div className="space-y-6" role="list" aria-label="Lista de rutas culturales">
+        <div
+          className="space-y-6"
+          role="list"
+          aria-label="Lista de rutas culturales"
+        >
           {routes.map((route) => (
-            <article 
-              key={route.id} 
+            <article
+              key={route.id}
               className="group flex flex-col md:flex-row gap-0 md:gap-6 bg-card border border-border/50 rounded-2xl overflow-hidden hover-elevate transition-all"
               role="listitem"
             >
               <div className="w-full md:w-72 h-56 md:h-auto shrink-0 relative overflow-hidden">
-                <img 
-                  src={route.image} 
-                  alt="" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                <img
+                  src={route.image}
+                  alt=""
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   aria-hidden="true"
                 />
               </div>
-              
+
               <div className="p-5 flex flex-col flex-1">
                 <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {route.municipality}</span>
+                  <span className="flex items-center gap-1">
+                    <MapPin className="h-3.5 w-3.5" /> {route.municipality}
+                  </span>
                   <span>•</span>
-                  <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {route.duration}</span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="h-3.5 w-3.5" /> {route.duration}
+                  </span>
                   <span>•</span>
                   <span>{route.stopCount} paradas</span>
                 </div>
-                
+
                 <h2 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  <Link href={`/rutas/${route.slug}`} className="focus-visible:outline-none focus-visible:underline">
+                  <Link
+                    href={`/rutas/${route.slug}`}
+                    className="focus-visible:outline-none focus-visible:underline"
+                  >
                     {route.title}
                   </Link>
                 </h2>
-                
+
                 <p className="text-muted-foreground mb-6 flex-1 line-clamp-3 md:line-clamp-2">
                   {route.summary}
                 </p>
-                
+
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-border/40">
-                  <div className="flex gap-3 text-primary bg-primary/10 px-3 py-1.5 rounded-lg" aria-label="Recursos de accesibilidad disponibles">
-                    {route.flags.audio && <div className="flex items-center gap-1.5" title="Audioguía disponible"><Ear className="h-4 w-4" /><span className="text-xs font-semibold sr-only md:not-sr-only">Audio</span></div>}
-                    {route.flags.lse && <div className="flex items-center gap-1.5" title="Vídeo LSE disponible"><HandMetal className="h-4 w-4" /><span className="text-xs font-semibold sr-only md:not-sr-only">LSE</span></div>}
-                    {route.flags.easyRead && <div className="flex items-center gap-1.5" title="Lectura Fácil disponible"><BookOpen className="h-4 w-4" /><span className="text-xs font-semibold sr-only md:not-sr-only">Lectura Fácil</span></div>}
+                  <div
+                    className="flex gap-3 text-primary bg-primary/10 px-3 py-1.5 rounded-lg"
+                    aria-label="Recursos de accesibilidad disponibles"
+                  >
+                    {route.flags.audio && (
+                      <div
+                        className="flex items-center gap-1.5"
+                        title="Audioguía disponible"
+                      >
+                        <Ear className="h-4 w-4" />
+                        <span className="text-xs font-semibold sr-only md:not-sr-only">
+                          Audio
+                        </span>
+                      </div>
+                    )}
+                    {route.flags.lse && (
+                      <div
+                        className="flex items-center gap-1.5"
+                        title="Vídeo LSE disponible"
+                      >
+                        <HandMetal className="h-4 w-4" />
+                        <span className="text-xs font-semibold sr-only md:not-sr-only">
+                          LSE
+                        </span>
+                      </div>
+                    )}
+                    {route.flags.easyRead && (
+                      <div
+                        className="flex items-center gap-1.5"
+                        title="Lectura Fácil disponible"
+                      >
+                        <BookOpen className="h-4 w-4" />
+                        <span className="text-xs font-semibold sr-only md:not-sr-only">
+                          Lectura Fácil
+                        </span>
+                      </div>
+                    )}
                   </div>
-                  
+
                   <Button asChild>
-                    <Link href={`/rutas/${route.slug}`}>
-                      Ver ruta
-                    </Link>
+                    <Link href={`/rutas/${route.slug}`}>Ver ruta</Link>
                   </Button>
                 </div>
               </div>
